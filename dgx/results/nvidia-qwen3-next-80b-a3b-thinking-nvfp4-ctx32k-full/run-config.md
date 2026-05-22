@@ -1,0 +1,21 @@
+# Run Configuration
+
+- Model: `nvidia/Qwen3-Next-80B-A3B-Thinking-NVFP4`
+- Startup script: `scripts/start-nvidia-qwen3-next-80b-a3b-thinking-nvfp4.sh`
+- Container image: `nvcr.io/nvidia/vllm:26.04-py3`
+- Port: `8000`
+- Tensor parallel size: `1`
+- Context window / max model length: `32768` tokens (`ctx32k`)
+- Startup flags:
+  - `--reasoning-parser qwen3`
+  - `--kv-cache-dtype fp8`
+- Reported backend details from logs:
+  - FP4 linear backend: `NvFp4LinearBackend.FLASHINFER_CUTLASS`
+  - MoE backend: `FLASHINFER_CUTLASS`
+  - Attention backend: `FLASHINFER`
+  - KV cache dtype: `fp8`
+- Benchmark command:
+  - `python3 benchmark_vllm_openai.py --model nvidia/Qwen3-Next-80B-A3B-Thinking-NVFP4 --suite --suite-cases 1:1,1:2,1:4,2:4,4:8,8:16,16:32,32:64 --prompt-mode unique --prompt-words 256 --max-tokens 128 --warmup 1 --no-per-request-details --resource-interval 1.0 --process-match vllm --output-dir results/nvidia-qwen3-next-80b-a3b-thinking-nvfp4-ctx32k-full`
+- Result:
+  - Full suite completed successfully with zero failed requests.
+  - Server reported `max_model_len=32768`.

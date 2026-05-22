@@ -1,0 +1,3 @@
+| Model | Mode | Conc | Req | Fail | Abort | VLLM max conc | Prompt tok/s agg | Prefill tok/s req | Decode tok/s agg | Decode tok/s req | Total tok/s | Lat mean s | TTFT mean s | GPU util mean % | GPU util max % | GPU mem GiB | GPU mem % | Proc GPU GiB | Host CPU mean % | Host CPU max % | Host RAM % | Swap GiB | Proc CPU mean % | Proc CPU max % | Proc RSS GiB |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| RedHatAI/Qwen3.6-35B-A3B-NVFP4 | unique | 1 | 1 | 0 | True | 32.38 | 144.38 | 3520.32 | 41.81 | 43.28 | 186.19 | 3.06 | 0.13 | 96.00 | 96.00 | - | - | 107.83 | 10.48 | 10.84 | 97.81 | 1.98 | 10.12 | 10.12 | 6.64 |

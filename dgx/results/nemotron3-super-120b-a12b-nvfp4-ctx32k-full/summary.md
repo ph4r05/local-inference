@@ -1,0 +1,8 @@
+| Model | Mode | Conc | Req | Fail | Prompt tok/s agg | Prefill tok/s req | Decode tok/s agg | Decode tok/s req | Total tok/s | Lat mean s | TTFT mean s | GPU util mean % | GPU util max % | GPU mem GiB | GPU mem % | Proc GPU GiB | Host CPU mean % | Host CPU max % | Host RAM % | Proc CPU mean % | Proc CPU max % | Proc RSS GiB |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4 | unique | 1 | 4 | 0 | 57.89 | 1061.06 | 14.65 | 15.38 | 72.55 | 8.74 | 0.48 | 96.00 | 96.00 | - | - | 110.39 | 9.46 | 11.17 | 96.28 | 8.62 | 8.82 | 1.83 |
+| nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4 | unique | 2 | 4 | 0 | 99.70 | 766.36 | 25.23 | 13.39 | 124.94 | 10.14 | 0.66 | 96.00 | 96.00 | - | - | 110.39 | 9.31 | 10.43 | 96.29 | 8.50 | 8.67 | 1.83 |
+| nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4 | unique | 4 | 8 | 0 | 165.75 | 435.05 | 41.49 | 11.40 | 207.24 | 12.32 | 1.18 | 96.00 | 96.00 | - | - | 110.39 | 13.85 | 19.32 | 96.26 | 8.44 | 8.90 | 1.84 |
+| nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4 | unique | 8 | 16 | 0 | 252.51 | 257.75 | 62.86 | 8.97 | 315.37 | 16.27 | 2.10 | 96.00 | 96.00 | - | - | 110.39 | 13.22 | 17.11 | 96.26 | 8.38 | 8.80 | 1.72 |
+| nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4 | unique | 16 | 32 | 0 | 359.61 | 200.14 | 89.27 | 6.39 | 448.88 | 22.85 | 2.92 | 96.00 | 96.00 | - | - | 110.39 | 9.39 | 11.53 | 96.25 | 8.29 | 8.81 | 1.72 |
+| nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4 | unique | 32 | 64 | 0 | 475.80 | 145.51 | 118.09 | 4.25 | 593.89 | 34.41 | 4.45 | 96.00 | 96.00 | - | - | 110.39 | 9.25 | 14.96 | 96.25 | 8.04 | 8.62 | 1.74 |

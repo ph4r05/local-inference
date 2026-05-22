@@ -1,0 +1,10 @@
+| Model | Mode | Conc | Req | Fail | Prompt tok/s agg | Prefill tok/s req | Decode tok/s agg | Decode tok/s req | Total tok/s | Lat mean s | TTFT mean s | GPU util mean % | GPU util max % | GPU mem GiB | GPU mem % | Proc GPU GiB | Host CPU mean % | Host CPU max % | Host RAM % | Proc CPU mean % | Proc CPU max % | Proc RSS GiB |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| nvidia/Qwen3-Next-80B-A3B-Thinking-NVFP4 | unique | 1 | 1 | 0 | 106.37 | 2271.83 | 30.80 | 32.08 | 137.17 | 4.15 | 0.19 | 96.00 | 96.00 | - | - | 109.13 | 6.32 | 6.53 | 95.87 | 5.70 | 5.79 | 3.76 |
+| nvidia/Qwen3-Next-80B-A3B-Thinking-NVFP4 | unique | 1 | 2 | 0 | 108.44 | 2232.19 | 30.47 | 31.78 | 138.91 | 4.20 | 0.20 | 96.00 | 96.00 | - | - | 109.13 | 6.63 | 8.24 | 96.01 | 5.57 | 5.64 | 3.76 |
+| nvidia/Qwen3-Next-80B-A3B-Thinking-NVFP4 | unique | 1 | 4 | 0 | 111.74 | 2300.95 | 30.64 | 31.96 | 142.38 | 4.18 | 0.20 | 94.60 | 96.00 | - | - | 109.13 | 6.34 | 7.64 | 96.17 | 5.60 | 5.69 | 3.76 |
+| nvidia/Qwen3-Next-80B-A3B-Thinking-NVFP4 | unique | 2 | 4 | 0 | 218.12 | 1590.79 | 59.82 | 32.04 | 277.94 | 4.27 | 0.30 | 94.12 | 96.00 | - | - | 109.13 | 6.50 | 6.88 | 96.22 | 5.77 | 6.24 | 3.80 |
+| nvidia/Qwen3-Next-80B-A3B-Thinking-NVFP4 | unique | 4 | 8 | 0 | 370.93 | 1142.97 | 100.51 | 27.28 | 471.44 | 5.08 | 0.42 | 96.00 | 96.00 | - | - | 109.13 | 6.72 | 9.28 | 96.26 | 5.71 | 5.90 | 3.82 |
+| nvidia/Qwen3-Next-80B-A3B-Thinking-NVFP4 | unique | 8 | 16 | 0 | 583.48 | 528.94 | 157.17 | 22.87 | 740.66 | 6.50 | 0.94 | 94.00 | 96.00 | - | - | 109.13 | 7.28 | 9.79 | 95.94 | 5.77 | 7.20 | 3.82 |
+| nvidia/Qwen3-Next-80B-A3B-Thinking-NVFP4 | unique | 16 | 32 | 0 | 896.27 | 442.22 | 240.71 | 17.52 | 1136.98 | 8.46 | 1.20 | 96.00 | 96.00 | - | - | 109.13 | 7.13 | 10.50 | 95.94 | 5.86 | 6.97 | 3.82 |
+| nvidia/Qwen3-Next-80B-A3B-Thinking-NVFP4 | unique | 32 | 64 | 0 | 1214.56 | 311.22 | 326.10 | 12.10 | 1540.66 | 12.45 | 1.88 | 96.00 | 96.00 | - | - | 109.13 | 7.61 | 10.89 | 95.95 | 6.06 | 7.89 | 3.83 |
