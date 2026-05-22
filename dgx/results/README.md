@@ -32,6 +32,10 @@ This directory contains the benchmark artifacts gathered against the local vLLM 
 | `Qwen/Qwen3-Next-80B-A3B-Thinking` | `ctx32k` | failed | OOM during startup; FlashInfer retry and reduced `ctx8192` also failed. |
 | `nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-NVFP4` | `ctx256k` | failed | Failed during startup/autotune/module load before `/v1/models` was ready. vLLM reported max full-context concurrency `30.47x`. |
 
+## 256k Startup Tuning
+
+See [256k-context-tuning.md](./256k-context-tuning.md) for the practical startup settings and model-specific guidance for `256k` runs.
+
 ## Notes
 
 - Result folders are named with `ctx32k`, `ctx128k`, or `ctx256k` so the context window is explicit in the path.

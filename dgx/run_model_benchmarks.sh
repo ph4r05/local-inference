@@ -16,10 +16,12 @@ STOP_AFTER_EACH="${STOP_AFTER_EACH:-1}"
 SKIP_CONTEXTS="${SKIP_CONTEXTS:-}"
 FILTER_SUITE_BY_VLLM_MAX="${FILTER_SUITE_BY_VLLM_MAX:-1}"
 CONCURRENCY_SAFETY_FRACTION="${CONCURRENCY_SAFETY_FRACTION:-0.85}"
-MAX_HOST_RAM_PCT="${MAX_HOST_RAM_PCT:-96.5}"
+MAX_HOST_RAM_PCT="${MAX_HOST_RAM_PCT:-0}"
 MAX_SWAP_USED_GIB="${MAX_SWAP_USED_GIB:-4.0}"
 MAX_SWAP_GROWTH_GIB="${MAX_SWAP_GROWTH_GIB:-1.0}"
 GUARD_GRACE_SAMPLES="${GUARD_GRACE_SAMPLES:-2}"
+VLLM_STARTUP_LOAD_THRESHOLD="${VLLM_STARTUP_LOAD_THRESHOLD:-6}"
+VLLM_STARTUP_SWAP_USED_GIB="${VLLM_STARTUP_SWAP_USED_GIB:-2}"
 
 MODELS=(
   "nemotron3-nano-omni-30b-a3b-reasoning-nvfp4|nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-NVFP4|${BENCH_ROOT}/scripts/start-nemotron3-nano-omni-30b-nvfp4.sh"
@@ -160,6 +162,19 @@ for spec in "${MODELS[@]}"; do
     vllm_metadata_args+=(--vllm-max-model-len "${vllm_max_model_len}")
   fi
 
+  host_ram_guard_display="disabled"
+  if awk -v value="${MAX_HOST_RAM_PCT}" 'BEGIN { exit !(value + 0 > 0) }'; then
+    host_ram_guard_display="${MAX_HOST_RAM_PCT}"
+  fi
+  startup_load_display="disabled"
+  if awk -v value="${VLLM_STARTUP_LOAD_THRESHOLD}" 'BEGIN { exit !(value + 0 > 0) }'; then
+    startup_load_display="${VLLM_STARTUP_LOAD_THRESHOLD}"
+  fi
+  startup_swap_display="disabled"
+  if awk -v value="${VLLM_STARTUP_SWAP_USED_GIB}" 'BEGIN { exit !(value + 0 > 0) }'; then
+    startup_swap_display="${VLLM_STARTUP_SWAP_USED_GIB} GiB"
+  fi
+
   cat > "${output_dir}/run-config.md" <<EOF
 # Run Config
 
@@ -177,7 +192,9 @@ for spec in "${MODELS[@]}"; do
 - vLLM reported max full-context concurrency: ${vllm_max_concurrency}
 - Concurrency safety fraction: ${CONCURRENCY_SAFETY_FRACTION}
 - Safe max benchmark concurrency: ${safe_max_concurrency}
-- Host RAM guard percent: ${MAX_HOST_RAM_PCT}
+- Host RAM guard percent: ${host_ram_guard_display}
+- Startup load watchdog threshold: ${startup_load_display}
+- Startup swap watchdog ceiling: ${startup_swap_display}
 - Swap used guard GiB: ${MAX_SWAP_USED_GIB}
 - Swap growth guard GiB: ${MAX_SWAP_GROWTH_GIB}
 - Prompt mode: ${PROMPT_MODE}

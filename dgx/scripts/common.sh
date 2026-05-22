@@ -23,15 +23,64 @@ TIKTOKEN_CACHE_DIR="${TIKTOKEN_CACHE_DIR:-${HOME}/.cache/tiktoken_cache}"
 DOCKER_ENTRYPOINT="${DOCKER_ENTRYPOINT-__unset__}"
 VLLM_START_TIMEOUT="${VLLM_START_TIMEOUT:-900}"
 VLLM_READY_SLEEP="${VLLM_READY_SLEEP:-10}"
+VLLM_STARTUP_LOAD_THRESHOLD="${VLLM_STARTUP_LOAD_THRESHOLD:-6}"
+VLLM_STARTUP_LOAD_INTERVAL="${VLLM_STARTUP_LOAD_INTERVAL:-1}"
+VLLM_STARTUP_SWAP_USED_GIB="${VLLM_STARTUP_SWAP_USED_GIB:-2}"
+LOAD_WATCHDOG_PID=""
+LOAD_WATCHDOG_STOP_FILE=""
 
 safe_name() {
   printf '%s' "$1" | tr '/:[:space:]' '---' | tr -cd 'A-Za-z0-9._-'
 }
 
 stop_vllm_container() {
+  stop_startup_load_watchdog
   docker rm -f "${CONTAINER_NAME}" >/dev/null 2>&1 || true
   if [[ "${LEGACY_CONTAINER_NAME}" != "${CONTAINER_NAME}" ]]; then
     docker rm -f "${LEGACY_CONTAINER_NAME}" >/dev/null 2>&1 || true
+  fi
+}
+
+start_startup_load_watchdog() {
+  local threshold="${1:-${VLLM_STARTUP_LOAD_THRESHOLD}}"
+  local interval="${2:-${VLLM_STARTUP_LOAD_INTERVAL}}"
+  local swap_limit_gib="${3:-${VLLM_STARTUP_SWAP_USED_GIB}}"
+  [[ -n "${threshold}" ]] || return 0
+  awk -v value="${threshold}" 'BEGIN { exit !(value + 0 > 0) }' || return 0
+  if [[ -n "${LOAD_WATCHDOG_PID}" ]] && kill -0 "${LOAD_WATCHDOG_PID}" >/dev/null 2>&1; then
+    return 0
+  fi
+
+  LOAD_WATCHDOG_STOP_FILE="$(mktemp)"
+  (
+    while [[ ! -f "${LOAD_WATCHDOG_STOP_FILE}" ]]; do
+      current_load="$(awk '{print $1}' /proc/loadavg)"
+      current_swap="$(awk '/SwapTotal:/ { total=$2 } /SwapFree:/ { free=$2 } END { if (total == "") { print "" } else { printf "%.0f", (total - free) / 1024 / 1024 } }' /proc/meminfo)"
+      if awk -v current="${current_load}" -v limit="${threshold}" 'BEGIN { exit !(current + 0 > limit + 0) }'; then
+        echo "Startup load watchdog tripped: loadavg=${current_load} > ${threshold}; killing ${CONTAINER_NAME}" >&2
+        docker kill "${CONTAINER_NAME}" >/dev/null 2>&1 || true
+        exit 0
+      fi
+      if [[ -n "${current_swap}" ]] && awk -v current="${current_swap}" -v limit="${swap_limit_gib}" 'BEGIN { exit !(current + 0 > limit + 0) }'; then
+        echo "Startup swap watchdog tripped: swap=${current_swap} GiB > ${swap_limit_gib} GiB; killing ${CONTAINER_NAME}" >&2
+        docker kill "${CONTAINER_NAME}" >/dev/null 2>&1 || true
+        exit 0
+      fi
+      sleep "${interval}"
+    done
+  ) &
+  LOAD_WATCHDOG_PID="$!"
+}
+
+stop_startup_load_watchdog() {
+  if [[ -n "${LOAD_WATCHDOG_STOP_FILE}" ]]; then
+    rm -f "${LOAD_WATCHDOG_STOP_FILE}" >/dev/null 2>&1 || true
+    LOAD_WATCHDOG_STOP_FILE=""
+  fi
+  if [[ -n "${LOAD_WATCHDOG_PID}" ]]; then
+    kill "${LOAD_WATCHDOG_PID}" >/dev/null 2>&1 || true
+    wait "${LOAD_WATCHDOG_PID}" >/dev/null 2>&1 || true
+    LOAD_WATCHDOG_PID=""
   fi
 }
 
@@ -39,20 +88,24 @@ wait_for_vllm() {
   local expected_model="$1"
   local deadline=$((SECONDS + VLLM_START_TIMEOUT))
   local url="http://127.0.0.1:${PORT}/v1/models"
+  start_startup_load_watchdog
 
   while (( SECONDS < deadline )); do
     if ! docker inspect -f '{{.State.Running}}' "${CONTAINER_NAME}" >/dev/null 2>&1; then
+      stop_startup_load_watchdog
       echo "Container ${CONTAINER_NAME} is not present while waiting for ${expected_model}" >&2
       docker logs --tail 200 "${CONTAINER_NAME}" >&2 || true
       return 1
     fi
     if [[ "$(docker inspect -f '{{.State.Running}}' "${CONTAINER_NAME}" 2>/dev/null || true)" != "true" ]]; then
+      stop_startup_load_watchdog
       echo "Container ${CONTAINER_NAME} exited while waiting for ${expected_model}" >&2
       docker logs --tail 200 "${CONTAINER_NAME}" >&2 || true
       return 1
     fi
     if body="$(curl -fsS "${url}" 2>/dev/null)"; then
       if [[ "${body}" == *"${expected_model}"* ]]; then
+        stop_startup_load_watchdog
         sleep "${VLLM_READY_SLEEP}"
         return 0
       fi
@@ -60,6 +113,7 @@ wait_for_vllm() {
     sleep 5
   done
 
+  stop_startup_load_watchdog
   echo "Timed out waiting for ${expected_model} at ${url}" >&2
   docker logs --tail 200 "${CONTAINER_NAME}" >&2 || true
   return 1

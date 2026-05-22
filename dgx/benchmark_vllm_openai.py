@@ -718,11 +718,12 @@ def run_benchmark(args: argparse.Namespace, concurrency: int, requests_count: in
         if not warmup.ok:
             raise SystemExit(f"warmup failed: {warmup.error}")
 
+    host_ram_guard_pct = args.max_host_ram_pct if args.max_host_ram_pct and args.max_host_ram_pct > 0 else None
     monitor = ResourceMonitor(
         args.resource_interval,
         args.process_match,
         args.pid,
-        max_host_ram_pct=args.max_host_ram_pct,
+        max_host_ram_pct=host_ram_guard_pct,
         max_swap_used_gib=args.max_swap_used_gib,
         max_swap_growth_gib=args.max_swap_growth_gib,
         guard_grace_samples=args.guard_grace_samples,
@@ -832,7 +833,7 @@ def run_benchmark(args: argparse.Namespace, concurrency: int, requests_count: in
         "vllm_max_concurrency": args.vllm_max_concurrency,
         "vllm_max_model_len": args.vllm_max_model_len,
         "concurrency_safety_fraction": args.concurrency_safety_fraction,
-        "host_ram_guard_pct": args.max_host_ram_pct,
+        "host_ram_guard_pct": host_ram_guard_pct,
         "swap_used_guard_gib": args.max_swap_used_gib,
         "swap_growth_guard_gib": args.max_swap_growth_gib,
     }
@@ -1040,7 +1041,7 @@ def main() -> None:
     parser.add_argument("--resource-interval", type=float, default=1.0)
     parser.add_argument("--process-match", default="vllm")
     parser.add_argument("--pid", type=int, action="append", default=[])
-    parser.add_argument("--max-host-ram-pct", type=float, default=96.5)
+    parser.add_argument("--max-host-ram-pct", type=float, default=0.0)
     parser.add_argument("--max-swap-used-gib", type=float, default=4.0)
     parser.add_argument("--max-swap-growth-gib", type=float, default=1.0)
     parser.add_argument("--guard-grace-samples", type=int, default=2)
