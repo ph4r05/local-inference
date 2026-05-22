@@ -1,0 +1,27 @@
+# Run Config
+
+- Slug: nemotron3-nano-omni-30b-a3b-reasoning-nvfp4
+- Model: nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-NVFP4
+- Startup script: /home/ph4r05/benchmark/scripts/start-nemotron3-nano-omni-30b-nvfp4.sh
+- Container image: nvcr.io/nvidia/vllm:26.04-py3
+- Port: 8000
+- Tensor parallel size: 1
+- MAX_MODEL_LEN / served context window: 262144
+- Suite cases requested: 1:1,1:2,1:4,2:4,4:8,8:16,16:32,32:64
+- Suite cases effective: 1:1,1:2,1:4,2:4,4:8,8:16,16:32,32:64
+- Suite cases skipped by vLLM max concurrency guard: 
+- vLLM reported max model length: 262144
+- vLLM reported max full-context concurrency: 70.37
+- Concurrency safety fraction: 0.85
+- Safe max benchmark concurrency: 59
+- Host RAM guard percent: disabled
+- Startup load watchdog threshold: 6
+- Startup swap watchdog ceiling: 2 GiB
+- Docker memory limit GiB: 120
+- Docker swap limit GiB: 2
+- Swap used guard GiB: 4.0
+- Swap growth guard GiB: 1.0
+- Prompt mode: unique
+- Prompt words: 256
+- Max output tokens: 128
+- Warmup requests per case: 1

@@ -9,6 +9,7 @@ This directory contains the benchmark artifacts gathered against the local vLLM 
 | `nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4` | `ctx32k` | done | Full suite completed. |
 | `nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-NVFP4` | `ctx32k` | done | Full suite completed. |
 | `nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-NVFP4` | `ctx128k` | done | Full suite completed. |
+| `nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-NVFP4` | `ctx256k` | done | Full suite completed. vLLM reported max full-context concurrency `70.37x`. |
 | `Qwen/Qwen3.6-27B-FP8` | `ctx32k` | done | Full suite completed. |
 | `RedHatAI/Qwen3.6-35B-A3B-NVFP4` | `ctx32k` | done | Full suite completed. |
 | `RedHatAI/Qwen3.6-35B-A3B-NVFP4` | `ctx128k` | done | Full suite completed. |

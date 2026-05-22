@@ -30,6 +30,35 @@ If startup succeeds, raise batching in steps:
 
 Keep `MAX_NUM_SEQS` low during load. `1` is the most conservative setting; `2` or `4` is only worth trying after the model already loads once.
 
+## Working Nemotron 256k Profile
+
+This is the launch profile that finally loaded and benchmarked `nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-NVFP4` at `256k` on this box:
+
+```bash
+MAX_MODEL_LEN=262144 \
+GPU_MEMORY_UTILIZATION=0.70 \
+MAX_NUM_SEQS=1 \
+MAX_NUM_BATCHED_TOKENS=16384 \
+MAX_HOST_RAM_PCT=0 \
+VLLM_DOCKER_MEMORY_LIMIT_GIB=120 \
+VLLM_DOCKER_SWAP_LIMIT_GIB=2 \
+VLLM_STARTUP_LOAD_THRESHOLD=6 \
+VLLM_STARTUP_SWAP_USED_GIB=2 \
+VLLM_START_TIMEOUT=3600 \
+./run_model_benchmarks.sh nemotron3-nano-omni-30b-a3b-reasoning-nvfp4
+```
+
+What changed relative to the unstable attempts:
+
+- Docker had a hard `120 GiB` memory cap, so the host did not get dragged into a runaway allocation.
+- Docker swap allowance was limited to `2 GiB`, which kept model load from wandering into multi-GB swap.
+- Startup load was killed if the 1-minute load average crossed `6`.
+- Startup swap was killed if used swap crossed `2 GiB`.
+- Host RAM aborts inside the benchmark harness were disabled; only swap-based runtime guards remained.
+- The model load was kept narrow with `MAX_NUM_SEQS=1` and `MAX_NUM_BATCHED_TOKENS=16384`.
+
+That profile was enough to get through model load, graph capture, warmup, and the full benchmark suite without an OOM.
+
 ## Model-Specific Guidance
 
 ### `nvidia/Qwen3-Next-80B-A3B-Thinking-NVFP4`
@@ -58,7 +87,7 @@ If it loads, try `65536` batched tokens next. If it fails during model load, low
 
 ### `nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-NVFP4`
 
-This one failed during `256k` startup/autotune/module load on this machine, so it is not a good candidate for an unconditional `256k` run.
+This one failed during earlier `256k` startup/autotune/module load attempts on this machine, so it is not a good candidate for an unconditional `256k` run without the guard profile above.
 
 If you still want to test it, keep the startup footprint very small:
 
