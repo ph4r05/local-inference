@@ -26,6 +26,8 @@ VLLM_READY_SLEEP="${VLLM_READY_SLEEP:-10}"
 VLLM_STARTUP_LOAD_THRESHOLD="${VLLM_STARTUP_LOAD_THRESHOLD:-6}"
 VLLM_STARTUP_LOAD_INTERVAL="${VLLM_STARTUP_LOAD_INTERVAL:-1}"
 VLLM_STARTUP_SWAP_USED_GIB="${VLLM_STARTUP_SWAP_USED_GIB:-2}"
+VLLM_DOCKER_MEMORY_LIMIT_GIB="${VLLM_DOCKER_MEMORY_LIMIT_GIB:-}"
+VLLM_DOCKER_SWAP_LIMIT_GIB="${VLLM_DOCKER_SWAP_LIMIT_GIB:-}"
 LOAD_WATCHDOG_PID=""
 LOAD_WATCHDOG_STOP_FILE=""
 
@@ -124,6 +126,15 @@ start_vllm_model() {
   shift
   local extra_args=("$@")
   local extra_env_args=()
+  local docker_memory_args=()
+  if [[ -n "${VLLM_DOCKER_MEMORY_LIMIT_GIB}" ]]; then
+    docker_memory_args+=(--memory "${VLLM_DOCKER_MEMORY_LIMIT_GIB}g")
+    if [[ -n "${VLLM_DOCKER_SWAP_LIMIT_GIB}" ]]; then
+      local docker_memory_swap_gib
+      docker_memory_swap_gib="$(awk -v mem="${VLLM_DOCKER_MEMORY_LIMIT_GIB}" -v swap="${VLLM_DOCKER_SWAP_LIMIT_GIB}" 'BEGIN { printf "%.0f", mem + swap }')"
+      docker_memory_args+=(--memory-swap "${docker_memory_swap_gib}g")
+    fi
+  fi
   if [[ -n "${EXTRA_DOCKER_ENV:-}" ]]; then
     local env_name
     for env_name in ${EXTRA_DOCKER_ENV}; do

@@ -76,6 +76,7 @@ For the benchmark suite itself, keep the load guards separate from the startup g
 - keep the benchmark swap ceiling active: `MAX_SWAP_USED_GIB=4`
 - keep the startup-only watchdog active: `VLLM_STARTUP_LOAD_THRESHOLD=6`
 - keep the startup-only swap ceiling active: `VLLM_STARTUP_SWAP_USED_GIB=2`
+- optionally cap the container itself with Docker memory limits: `VLLM_DOCKER_MEMORY_LIMIT_GIB` and `VLLM_DOCKER_SWAP_LIMIT_GIB`
 
 That setup lets startup fail fast if it starts to drift into swap or load pressure, without rejecting a healthy benchmark run later.
 

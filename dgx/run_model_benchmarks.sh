@@ -22,6 +22,8 @@ MAX_SWAP_GROWTH_GIB="${MAX_SWAP_GROWTH_GIB:-1.0}"
 GUARD_GRACE_SAMPLES="${GUARD_GRACE_SAMPLES:-2}"
 VLLM_STARTUP_LOAD_THRESHOLD="${VLLM_STARTUP_LOAD_THRESHOLD:-6}"
 VLLM_STARTUP_SWAP_USED_GIB="${VLLM_STARTUP_SWAP_USED_GIB:-2}"
+VLLM_DOCKER_MEMORY_LIMIT_GIB="${VLLM_DOCKER_MEMORY_LIMIT_GIB:-}"
+VLLM_DOCKER_SWAP_LIMIT_GIB="${VLLM_DOCKER_SWAP_LIMIT_GIB:-}"
 
 MODELS=(
   "nemotron3-nano-omni-30b-a3b-reasoning-nvfp4|nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-NVFP4|${BENCH_ROOT}/scripts/start-nemotron3-nano-omni-30b-nvfp4.sh"
@@ -195,6 +197,8 @@ for spec in "${MODELS[@]}"; do
 - Host RAM guard percent: ${host_ram_guard_display}
 - Startup load watchdog threshold: ${startup_load_display}
 - Startup swap watchdog ceiling: ${startup_swap_display}
+- Docker memory limit GiB: ${VLLM_DOCKER_MEMORY_LIMIT_GIB:-disabled}
+- Docker swap limit GiB: ${VLLM_DOCKER_SWAP_LIMIT_GIB:-disabled}
 - Swap used guard GiB: ${MAX_SWAP_USED_GIB}
 - Swap growth guard GiB: ${MAX_SWAP_GROWTH_GIB}
 - Prompt mode: ${PROMPT_MODE}
