@@ -40,10 +40,12 @@ See [256k-context-tuning.md](./256k-context-tuning.md) for the practical startup
 ## Notes
 
 - Result folders are named with `ctx32k`, `ctx128k`, or `ctx256k` so the context window is explicit in the path.
+- The benchmark suite records the vLLM server-side `--max-num-seqs` setting in `scripts/start-*.sh`; this is the main knob that changes whether requests are actually served concurrently or just queued.
 - The benchmark suite records:
   - aggregate prompt and decode tok/s
   - per-request decode tok/s
   - host CPU, host RAM, swap, and process CPU/RSS
   - vLLM-reported maximum full-context concurrency from startup logs
 - For long-context runs, the suite filters out cases above a safety fraction of the emitted vLLM concurrency limit so it does not overload the server.
+- Some reruns intentionally reuse the same result folder path for the same model/context pair. For example, `nemotron3-nano-omni-30b-a3b-reasoning-nvfp4-ctx256k-full` was first produced with `MAX_NUM_SEQS=1` and later overwritten by a rerun with `MAX_NUM_SEQS=2`. The current artifacts in that folder are the latest run.
 
