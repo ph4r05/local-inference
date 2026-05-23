@@ -13,6 +13,7 @@ This directory contains the benchmark artifacts gathered against the local vLLM 
 | `Qwen/Qwen3.6-27B-FP8` | `ctx32k` | done | Full suite completed. |
 | `RedHatAI/Qwen3.6-35B-A3B-NVFP4` | `ctx32k` | done | Full suite completed. |
 | `RedHatAI/Qwen3.6-35B-A3B-NVFP4` | `ctx128k` | done | Full suite completed. |
+| `RedHatAI/Qwen3.6-35B-A3B-NVFP4` | `ctx256k` | done | Full suite completed. Latest artifacts in this folder reflect the `MAX_NUM_SEQS=2` rerun. |
 | `nvidia/Qwen3-Next-80B-A3B-Thinking-NVFP4` | `ctx32k` | done | Full suite completed. |
 | `nvidia/Qwen3-Next-80B-A3B-Thinking-NVFP4` | `ctx128k` | done | Full suite completed. |
 | `nvidia/Qwen3-Next-80B-A3B-Thinking-NVFP4` | `ctx256k` | done | Full suite completed. vLLM reported max full-context concurrency `20.30x`. |
