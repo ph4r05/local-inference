@@ -1,6 +1,6 @@
-# vLLM Model Benchmark Suite
+# Model Benchmark Suite
 
-This repo benchmarks OpenAI-compatible vLLM servers on `http://127.0.0.1:8000`.
+This repo benchmarks local model servers, primarily vLLM on `http://127.0.0.1:8000` and Ollama on `http://127.0.0.1:11434`.
 
 ## Run One Model Manually
 
@@ -43,6 +43,20 @@ Include the already-tested 120B Nemotron Super model:
 INCLUDE_SUPER=1 ./run_model_benchmarks.sh
 ```
 
+## Run Ollama Benchmarks
+
+```bash
+./run_ollama_benchmarks.sh
+```
+
+Run only the Ollama Qwen 35B test:
+
+```bash
+./run_ollama_benchmarks.sh ollama-qwen3.6-35b-a3b-q8_0
+```
+
+Ollama request concurrency is controlled separately with `OLLAMA_NUM_PARALLEL`. The summary files use the same columns as the vLLM runs, and the shared concurrency/capacity column is populated from `OLLAMA_NUM_PARALLEL` for layout compatibility, so the token and resource numbers are directly comparable.
+
 ## Suite Case Meaning
 
 `--suite-cases 32:64` means 64 total requests with at most 32 concurrent in-flight requests. It does not mean 32 * 64 requests.
@@ -61,6 +75,10 @@ INCLUDE_SUPER=1 ./run_model_benchmarks.sh
 - `SUITE_CASES`: default `1:1,1:2,1:4,2:4,4:8,8:16,16:32,32:64`
 - `PROMPT_WORDS`: default `256`
 - `MAX_TOKENS`: default `128`
+- `OLLAMA_BASE_URL`: Ollama API base URL. Default: `http://127.0.0.1:11434`
+- `OLLAMA_NUM_PARALLEL`: Ollama server-side parallel request limit. Default: `1`
+- `OLLAMA_MAX_QUEUE`: Ollama queue limit. Default: `512`
+- `CONTEXT_LENGTH`: Ollama context length / `num_ctx` used by the runner. Default: `32768`
 
 ## Configured Models
 
