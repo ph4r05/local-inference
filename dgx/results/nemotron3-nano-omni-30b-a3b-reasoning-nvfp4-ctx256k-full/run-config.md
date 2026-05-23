@@ -11,7 +11,7 @@
 - Suite cases effective: 1:1,1:2,1:4,2:4,4:8,8:16,16:32,32:64
 - Suite cases skipped by vLLM max concurrency guard: 
 - vLLM reported max model length: 262144
-- vLLM reported max full-context concurrency: 70.37
+- vLLM reported max full-context concurrency: 70.26
 - Concurrency safety fraction: 0.85
 - Safe max benchmark concurrency: 59
 - Host RAM guard percent: disabled
