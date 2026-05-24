@@ -1053,7 +1053,12 @@ def main() -> None:
     parser.add_argument("--concurrency-safety-fraction", type=float, default=0.85)
     parser.add_argument("--abort-suite-on-guard", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--output-dir", default=None)
+    parser.add_argument("--run-config-path", default=None)
     args = parser.parse_args()
+
+    run_config = None
+    if args.run_config_path:
+        run_config = json.loads(Path(args.run_config_path).read_text(encoding="utf-8"))
 
     if args.suite:
         summaries = []
@@ -1064,6 +1069,8 @@ def main() -> None:
                 flush=True,
             )
             summary = run_benchmark(args, concurrency, requests_count)
+            if run_config is not None:
+                summary["run_config"] = run_config
             summaries.append(summary)
             if args.abort_suite_on_guard and summary.get("aborted"):
                 print(f"aborting remaining suite cases: {summary.get('abort_reason')}", flush=True)
@@ -1078,6 +1085,8 @@ def main() -> None:
         print(f"wrote {output_dir / 'summary.csv'}")
     else:
         summary = run_benchmark(args, args.concurrency, args.requests)
+        if run_config is not None:
+            summary["run_config"] = run_config
         print(json.dumps(summary, indent=2, sort_keys=True))
 
 

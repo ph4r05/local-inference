@@ -1,0 +1,32 @@
+# Run Config
+
+- Slug: nemotron3-super-120b-nvfp4
+- Model: nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4
+- Startup script: /home/ph4r05/benchmark/scripts/start-nemotron3-super-120b-nvfp4.sh
+- Container image: nvcr.io/nvidia/vllm:26.04-py3
+- Port: 8000
+- Tensor parallel size: 1
+- MAX_MODEL_LEN / served context window: 262144
+- vLLM GPU memory utilization: 0.72
+- vLLM max num seqs: 1
+- vLLM max num batched tokens: 16384
+- vLLM target batch context tokens: 262144
+- vLLM max num seqs cap: 16
+- Suite cases requested: 1:1,1:2,1:4,2:4,4:8,8:16,16:32,32:64
+- Suite cases effective: 1:1,1:2,1:4,2:4,4:8,8:16
+- Suite cases skipped by vLLM max concurrency guard: 16:32,32:64
+- vLLM reported max model length: 262144
+- vLLM reported max full-context concurrency: 10.19
+- Concurrency safety fraction: 0.85
+- Safe max benchmark concurrency: 8
+- Host RAM guard percent: disabled
+- Startup load watchdog threshold: 6
+- Startup swap watchdog ceiling: 1 GiB
+- Docker memory limit GiB: disabled
+- Docker swap limit GiB: disabled
+- Swap used guard GiB: 1.0
+- Swap growth guard GiB: 1.0
+- Prompt mode: unique
+- Prompt words: 256
+- Max output tokens: 128
+- Warmup requests per case: 1

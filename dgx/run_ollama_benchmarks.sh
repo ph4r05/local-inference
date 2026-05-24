@@ -64,17 +64,47 @@ context_label() {
   esac
 }
 
+build_run_config_json() {
+  local slug="$1"
+  local model_id="$2"
+  local start_script="$3"
+  local suite_cases="$4"
+
+  python3 "${BENCH_ROOT}/scripts/make_run_config.py" \
+    --set backend=ollama \
+    --set slug="${slug}" \
+    --set model_id="${model_id}" \
+    --set start_script="${start_script}" \
+    --set server_url="${OLLAMA_BASE_URL}" \
+    --set context_length="${CONTEXT_LENGTH}" \
+    --set ollama_num_parallel="${OLLAMA_NUM_PARALLEL}" \
+    --set ollama_max_queue="${OLLAMA_MAX_QUEUE}" \
+    --set suite_cases="${suite_cases}" \
+    --set prompt_mode="${PROMPT_MODE}" \
+    --set prompt_words="${PROMPT_WORDS}" \
+    --set max_tokens="${MAX_TOKENS}" \
+    --set warmup="${WARMUP}" \
+    --set resource_interval="${RESOURCE_INTERVAL}" \
+    --set max_host_ram_pct="${MAX_HOST_RAM_PCT}" \
+    --set max_swap_used_gib="${MAX_SWAP_USED_GIB}" \
+    --set max_swap_growth_gib="${MAX_SWAP_GROWTH_GIB}" \
+    --set guard_grace_samples="${GUARD_GRACE_SAMPLES}"
+}
+
 for spec in "${MODELS[@]}"; do
-  IFS='|' read -r slug model_id start_script <<<"${spec}"
+  IFS="|" read -r slug model_id start_script <<<"${spec}"
   ctx_label="$(context_label "${CONTEXT_LENGTH}")"
   if ! should_run "${slug}"; then
     continue
   fi
 
   echo "=== ${slug} :: ${model_id} ==="
+  run_config_json="$(build_run_config_json "${slug}" "${model_id}" "${start_script}" "${SUITE_CASES}")"
+  run_id="$(printf '%s' "${run_config_json}" | sha256sum | cut -c1-6)"
 
-  output_dir="${RESULTS_ROOT}/${slug}-${ctx_label}-full"
+  output_dir="${RESULTS_ROOT}/${slug}-${ctx_label}-${run_id}-full"
   mkdir -p "${output_dir}"
+  printf '%s\n' "${run_config_json}" > "${output_dir}/run-config.json"
   export OLLAMA_LOG_FILE="${output_dir}/startup.log"
 
   "${start_script}"
@@ -82,10 +112,12 @@ for spec in "${MODELS[@]}"; do
   cat > "${output_dir}/run-config.md" <<EOF
 # Run Config
 
+- Run ID: ${run_id}
 - Backend: ollama
 - Slug: ${slug}
 - Model: ${model_id}
 - Server URL: ${OLLAMA_BASE_URL}
+- Run config JSON: ${output_dir}/run-config.json
 - Context length / num_ctx: ${CONTEXT_LENGTH}
 - OLLAMA_NUM_PARALLEL: ${OLLAMA_NUM_PARALLEL}
 - OLLAMA_MAX_QUEUE: ${OLLAMA_MAX_QUEUE}
@@ -118,6 +150,7 @@ EOF
     --ollama-num-parallel "${OLLAMA_NUM_PARALLEL}" \
     --ollama-max-queue "${OLLAMA_MAX_QUEUE}" \
     --context-length "${CONTEXT_LENGTH}" \
+    --run-config-path "${output_dir}/run-config.json" \
     --output-dir "${output_dir}"
 
 done

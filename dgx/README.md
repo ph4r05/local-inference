@@ -70,6 +70,11 @@ Ollama request concurrency is controlled separately with `OLLAMA_NUM_PARALLEL`. 
 - `GPU_DEVICE`: Docker GPU device selector. Default: `0`
 - `CUDA_VISIBLE_DEVICES_VALUE`: container CUDA visibility. Default: `0`
 - `MAX_MODEL_LEN`: vLLM max model length. Default: `32768`
+- `VLLM_GPU_MEMORY_UTILIZATION`: vLLM GPU memory utilization. Default: `0.85`
+- `MAX_NUM_SEQS`: explicit vLLM `--max-num-seqs`. Default: auto-computed from `VLLM_TARGET_BATCH_CONTEXT_TOKENS / MAX_MODEL_LEN`.
+- `VLLM_TARGET_BATCH_CONTEXT_TOKENS`: auto `MAX_NUM_SEQS` target token budget. Default: `262144`, so 32K context uses 8 seqs, 128K uses 2, and 256K+ uses 1.
+- `VLLM_MAX_NUM_SEQS_CAP`: upper bound for auto `MAX_NUM_SEQS`. Default: `16`.
+- `VLLM_MAX_NUM_BATCHED_TOKENS`: explicit vLLM `--max-num-batched-tokens`. Also accepts legacy `MAX_NUM_BATCHED_TOKENS`. Default: max of `MAX_MODEL_LEN` and `VLLM_TARGET_BATCH_CONTEXT_TOKENS`.
 - `TENSOR_PARALLEL_SIZE`: vLLM tensor parallel size. Default: `1`
 - `HF_TOKEN`: Hugging Face token for gated models.
 - `SUITE_CASES`: default `1:1,1:2,1:4,2:4,4:8,8:16,16:32,32:64`
@@ -126,6 +131,8 @@ This is separate from the benchmark request shape:
 - `--prompt-words` controls generated synthetic prompt length.
 - `--max-tokens` controls maximum generated output tokens.
 - `MAX_MODEL_LEN` controls the model server's maximum context window and KV/cache planning.
+- `VLLM_GPU_MEMORY_UTILIZATION` controls how aggressively vLLM reserves GPU memory for weights, KV cache, and runtime buffers. The default is `0.85`, which is less aggressive than vLLM's typical high-throughput settings while still leaving useful cache headroom.
+- Auto `MAX_NUM_SEQS` deliberately shrinks at larger context windows to avoid planning many full-context requests at once. Set `MAX_NUM_SEQS` explicitly when you want a high-concurrency serving test.
 
 Record `MAX_MODEL_LEN` in result folder names or notes when comparing models. Performance can change materially at larger context windows such as 200k or 500k because vLLM may reserve/profile more KV cache capacity, use different scheduling limits, reduce maximum concurrency, or hit memory pressure. For fair apples-to-apples throughput comparisons, keep `MAX_MODEL_LEN` fixed across models. For long-context benchmarks, run a separate suite and name outputs explicitly, for example:
 

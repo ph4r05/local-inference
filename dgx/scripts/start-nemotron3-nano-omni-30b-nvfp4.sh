@@ -9,9 +9,6 @@ source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/common.sh"
 
 MODEL_ID="nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-NVFP4"
 start_vllm_model "${MODEL_ID}" \
-  --gpu-memory-utilization "${GPU_MEMORY_UTILIZATION:-0.70}" \
-  --max-num-seqs "${MAX_NUM_SEQS:-8}" \
-  --max-num-batched-tokens "${MAX_NUM_BATCHED_TOKENS:-32768}" \
   --limit-mm-per-prompt '{"video": 1, "image": 1, "audio": 1}' \
   --media-io-kwargs '{"video": {"fps": 2, "num_frames": 256}}' \
   --allowed-local-media-path / \

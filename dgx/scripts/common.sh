@@ -18,6 +18,10 @@ CUDA_VISIBLE_DEVICES_VALUE="${CUDA_VISIBLE_DEVICES_VALUE:-0}"
 GPU_DEVICE="${GPU_DEVICE:-0}"
 TENSOR_PARALLEL_SIZE="${TENSOR_PARALLEL_SIZE:-1}"
 MAX_MODEL_LEN="${MAX_MODEL_LEN:-32768}"
+VLLM_GPU_MEMORY_UTILIZATION="${VLLM_GPU_MEMORY_UTILIZATION:-${GPU_MEMORY_UTILIZATION:-0.85}}"
+VLLM_TARGET_BATCH_CONTEXT_TOKENS="${VLLM_TARGET_BATCH_CONTEXT_TOKENS:-262144}"
+VLLM_MAX_NUM_SEQS_CAP="${VLLM_MAX_NUM_SEQS_CAP:-16}"
+VLLM_MAX_NUM_BATCHED_TOKENS="${VLLM_MAX_NUM_BATCHED_TOKENS:-${MAX_NUM_BATCHED_TOKENS:-}}"
 HF_CACHE_DIR="${HF_CACHE_DIR:-${HOME}/.cache/huggingface}"
 TIKTOKEN_CACHE_DIR="${TIKTOKEN_CACHE_DIR:-${HOME}/.cache/tiktoken_cache}"
 DOCKER_ENTRYPOINT="${DOCKER_ENTRYPOINT-__unset__}"
@@ -86,6 +90,54 @@ stop_startup_load_watchdog() {
   fi
 }
 
+arg_present() {
+  local wanted="$1"
+  shift
+  local arg
+  for arg in "$@"; do
+    if [[ "${arg}" == "${wanted}" || "${arg}" == "${wanted}="* ]]; then
+      return 0
+    fi
+  done
+  return 1
+}
+
+auto_max_num_seqs() {
+  if [[ -n "${MAX_NUM_SEQS:-}" ]]; then
+    printf '%s\n' "${MAX_NUM_SEQS}"
+    return 0
+  fi
+  awk \
+    -v ctx="${MAX_MODEL_LEN}" \
+    -v target="${VLLM_TARGET_BATCH_CONTEXT_TOKENS}" \
+    -v cap="${VLLM_MAX_NUM_SEQS_CAP}" \
+    'BEGIN {
+      if (ctx <= 0) ctx = 32768
+      if (target <= 0) target = ctx
+      if (cap <= 0) cap = 1
+      seqs = int(target / ctx)
+      if (target % ctx != 0) seqs += 1
+      if (seqs < 1) seqs = 1
+      if (seqs > cap) seqs = cap
+      print seqs
+    }'
+}
+
+auto_max_num_batched_tokens() {
+  if [[ -n "${VLLM_MAX_NUM_BATCHED_TOKENS}" ]]; then
+    printf '%s\n' "${VLLM_MAX_NUM_BATCHED_TOKENS}"
+    return 0
+  fi
+  awk \
+    -v ctx="${MAX_MODEL_LEN}" \
+    -v target="${VLLM_TARGET_BATCH_CONTEXT_TOKENS}" \
+    'BEGIN {
+      if (ctx <= 0) ctx = 32768
+      if (target < ctx) target = ctx
+      print target
+    }'
+}
+
 wait_for_vllm() {
   local expected_model="$1"
   local deadline=$((SECONDS + VLLM_START_TIMEOUT))
@@ -125,6 +177,22 @@ start_vllm_model() {
   local model_id="$1"
   shift
   local extra_args=("$@")
+  local vllm_runtime_args=()
+  local max_num_seqs
+  local max_num_batched_tokens
+
+  if [[ -n "${VLLM_GPU_MEMORY_UTILIZATION}" ]] && ! arg_present "--gpu-memory-utilization" "${extra_args[@]}"; then
+    vllm_runtime_args+=(--gpu-memory-utilization "${VLLM_GPU_MEMORY_UTILIZATION}")
+  fi
+  if ! arg_present "--max-num-seqs" "${extra_args[@]}"; then
+    max_num_seqs="$(auto_max_num_seqs)"
+    vllm_runtime_args+=(--max-num-seqs "${max_num_seqs}")
+  fi
+  if ! arg_present "--max-num-batched-tokens" "${extra_args[@]}"; then
+    max_num_batched_tokens="$(auto_max_num_batched_tokens)"
+    vllm_runtime_args+=(--max-num-batched-tokens "${max_num_batched_tokens}")
+  fi
+
   local extra_env_args=()
   local docker_memory_args=()
   if [[ -n "${VLLM_DOCKER_MEMORY_LIMIT_GIB}" ]]; then
@@ -153,6 +221,7 @@ start_vllm_model() {
   docker run -d \
     --name "${CONTAINER_NAME}" \
     "${entrypoint_args[@]}" \
+    "${docker_memory_args[@]}" \
     --gpus "device=${GPU_DEVICE}" \
     --ipc=host \
     --shm-size=16g \
@@ -173,5 +242,6 @@ start_vllm_model() {
       --tensor-parallel-size "${TENSOR_PARALLEL_SIZE}" \
       --trust-remote-code \
       --max-model-len "${MAX_MODEL_LEN}" \
+      "${vllm_runtime_args[@]}" \
       "${extra_args[@]}"
 }

@@ -84,6 +84,49 @@ context_label() {
   esac
 }
 
+build_run_config_json() {
+  local slug="$1"
+  local model_id="$2"
+  local start_script="$3"
+  python3 "${BENCH_ROOT}/scripts/make_run_config.py" \
+    --set backend=vllm \
+    --set slug="${slug}" \
+    --set model_id="${model_id}" \
+    --set start_script="${start_script}" \
+    --set include_super="${INCLUDE_SUPER:-0}" \
+    --set suite_cases="${SUITE_CASES}" \
+    --set prompt_mode="${PROMPT_MODE}" \
+    --set prompt_words="${PROMPT_WORDS}" \
+    --set max_tokens="${MAX_TOKENS}" \
+    --set warmup="${WARMUP}" \
+    --set resource_interval="${RESOURCE_INTERVAL}" \
+    --set concurrency_safety_fraction="${CONCURRENCY_SAFETY_FRACTION}" \
+    --set max_host_ram_pct="${MAX_HOST_RAM_PCT}" \
+    --set max_swap_used_gib="${MAX_SWAP_USED_GIB}" \
+    --set max_swap_growth_gib="${MAX_SWAP_GROWTH_GIB}" \
+    --set guard_grace_samples="${GUARD_GRACE_SAMPLES}" \
+    --set stop_after_each="${STOP_AFTER_EACH}" \
+    --set filter_suite_by_vllm_max="${FILTER_SUITE_BY_VLLM_MAX}" \
+    --set vllm_startup_load_threshold="${VLLM_STARTUP_LOAD_THRESHOLD}" \
+    --set vllm_startup_swap_used_gib="${VLLM_STARTUP_SWAP_USED_GIB}" \
+    --set vllm_docker_memory_limit_gib="${VLLM_DOCKER_MEMORY_LIMIT_GIB:-}" \
+    --set vllm_docker_swap_limit_gib="${VLLM_DOCKER_SWAP_LIMIT_GIB:-}" \
+    --set container_name="${CONTAINER_NAME}" \
+    --set legacy_container_name="${LEGACY_CONTAINER_NAME}" \
+    --set vllm_image="${VLLM_IMAGE}" \
+    --set port="${PORT}" \
+    --set host="${HOST}" \
+    --set gpu_device="${GPU_DEVICE}" \
+    --set cuda_visible_devices="${CUDA_VISIBLE_DEVICES_VALUE}" \
+    --set tensor_parallel_size="${TENSOR_PARALLEL_SIZE}" \
+    --set max_model_len="${MAX_MODEL_LEN}" \
+    --set vllm_gpu_memory_utilization="${VLLM_GPU_MEMORY_UTILIZATION}" \
+    --set vllm_target_batch_context_tokens="${VLLM_TARGET_BATCH_CONTEXT_TOKENS}" \
+    --set vllm_max_num_seqs_cap="${VLLM_MAX_NUM_SEQS_CAP}" \
+    --set vllm_max_num_seqs="${configured_max_num_seqs}" \
+    --set vllm_max_num_batched_tokens="${configured_max_num_batched_tokens}"
+}
+
 read_vllm_capacity() {
   local logs_file="$1"
   sed -nE 's/.*Maximum concurrency for ([0-9,]+) tokens per request: ([0-9.]+)x.*/\1 \2/p' "${logs_file}" \
@@ -130,18 +173,25 @@ for spec in "${MODELS[@]}"; do
   fi
 
   echo "=== ${slug} :: ${model_id} ==="
-  "${start_script}"
-
-  output_dir="${RESULTS_ROOT}/${slug}-${ctx_label}-full"
-  mkdir -p "${output_dir}"
-  docker logs "${CONTAINER_NAME}" > "${output_dir}/startup.log" 2>&1 || true
-
-  vllm_capacity="$(read_vllm_capacity "${output_dir}/startup.log")"
+  configured_max_num_seqs="$(auto_max_num_seqs)"
+  configured_max_num_batched_tokens="$(auto_max_num_batched_tokens)"
+  effective_suite_cases="${SUITE_CASES}"
+  skipped_suite_cases=""
   vllm_max_model_len=""
   vllm_max_concurrency=""
   safe_max_concurrency=""
-  effective_suite_cases="${SUITE_CASES}"
-  skipped_suite_cases=""
+  run_config_json="$(build_run_config_json "${slug}" "${model_id}" "${start_script}")"
+  run_id="$(printf '%s' "${run_config_json}" | sha256sum | cut -c1-6)"
+
+  output_dir="${RESULTS_ROOT}/${slug}-${ctx_label}-${run_id}-full"
+  mkdir -p "${output_dir}"
+  printf '%s\n' "${run_config_json}" > "${output_dir}/run-config.json"
+
+  "${start_script}"
+
+  docker logs "${CONTAINER_NAME}" > "${output_dir}/startup.log" 2>&1 || true
+
+  vllm_capacity="$(read_vllm_capacity "${output_dir}/startup.log")"
   if [[ -n "${vllm_capacity}" ]]; then
     read -r vllm_max_model_len vllm_max_concurrency <<<"${vllm_capacity}"
     safe_max_concurrency="$(safe_concurrency_limit "${vllm_max_concurrency}")"
@@ -180,13 +230,20 @@ for spec in "${MODELS[@]}"; do
   cat > "${output_dir}/run-config.md" <<EOF
 # Run Config
 
+- Run ID: ${run_id}
 - Slug: ${slug}
 - Model: ${model_id}
 - Startup script: ${start_script}
+- Run config JSON: ${output_dir}/run-config.json
 - Container image: ${VLLM_IMAGE}
 - Port: ${PORT}
 - Tensor parallel size: ${TENSOR_PARALLEL_SIZE}
 - MAX_MODEL_LEN / served context window: ${MAX_MODEL_LEN}
+- vLLM GPU memory utilization: ${VLLM_GPU_MEMORY_UTILIZATION}
+- vLLM max num seqs: ${configured_max_num_seqs}
+- vLLM max num batched tokens: ${configured_max_num_batched_tokens}
+- vLLM target batch context tokens: ${VLLM_TARGET_BATCH_CONTEXT_TOKENS}
+- vLLM max num seqs cap: ${VLLM_MAX_NUM_SEQS_CAP}
 - Suite cases requested: ${SUITE_CASES}
 - Suite cases effective: ${effective_suite_cases}
 - Suite cases skipped by vLLM max concurrency guard: ${skipped_suite_cases}
@@ -223,6 +280,7 @@ EOF
     --guard-grace-samples "${GUARD_GRACE_SAMPLES}" \
     "${vllm_metadata_args[@]}" \
     --concurrency-safety-fraction "${CONCURRENCY_SAFETY_FRACTION}" \
+    --run-config-path "${output_dir}/run-config.json" \
     --output-dir "${output_dir}"
 
   if [[ "${STOP_AFTER_EACH}" == "1" ]]; then
