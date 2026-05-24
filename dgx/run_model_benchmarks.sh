@@ -30,6 +30,7 @@ MODELS=(
   "qwen3.6-35b-a3b-fp8|Qwen/Qwen3.6-35B-A3B-FP8|${BENCH_ROOT}/scripts/start-qwen3.6-35b-a3b-fp8.sh"
   "qwen3.6-35b-a3b-nvfp4|Qwen/Qwen3.6-35B-A3B-NVFP4|${BENCH_ROOT}/scripts/start-qwen3.6-35b-a3b-nvfp4.sh"
   "redhatai-qwen3.6-35b-a3b-nvfp4|RedHatAI/Qwen3.6-35B-A3B-NVFP4|${BENCH_ROOT}/scripts/start-redhatai-qwen3.6-35b-a3b-nvfp4.sh"
+  "vllm-qwen3.6-35b-a3b-256k|RedHatAI/Qwen3.6-35B-A3B-NVFP4|${BENCH_ROOT}/scripts/start-vllm-qwen3.6-35b-a3b-256k.sh"
   "qwen3-next-80b-a3b-thinking|Qwen/Qwen3-Next-80B-A3B-Thinking|${BENCH_ROOT}/scripts/start-qwen3-next-80b-a3b-thinking.sh"
   "nvidia-qwen3-next-80b-a3b-thinking-nvfp4|nvidia/Qwen3-Next-80B-A3B-Thinking-NVFP4|${BENCH_ROOT}/scripts/start-nvidia-qwen3-next-80b-a3b-thinking-nvfp4.sh"
   "qwen3.6-27b-fp8|Qwen/Qwen3.6-27B-FP8|${BENCH_ROOT}/scripts/start-qwen3.6-27b-fp8.sh"
