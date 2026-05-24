@@ -1,0 +1,34 @@
+# Run Config
+
+- Run ID: 614957
+- Slug: redhatai-qwen3.6-35b-a3b-nvfp4
+- Model: RedHatAI/Qwen3.6-35B-A3B-NVFP4
+- Startup script: /home/ph4r05/benchmark/scripts/start-redhatai-qwen3.6-35b-a3b-nvfp4.sh
+- Run config JSON: /home/ph4r05/benchmark/results/redhatai-qwen3.6-35b-a3b-nvfp4-ctx256k-614957-full/run-config.json
+- Container image: nvcr.io/nvidia/vllm:26.04-py3
+- Port: 8000
+- Tensor parallel size: 1
+- MAX_MODEL_LEN / served context window: 262144
+- vLLM GPU memory utilization: 0.85
+- vLLM max num seqs: 4
+- vLLM max num batched tokens: 32768
+- vLLM target batch context tokens: 262144
+- vLLM max num seqs cap: 16
+- Suite cases requested: 1:1,1:2,1:4,2:4,4:8,8:16,16:32,32:64
+- Suite cases effective: 1:1,1:2,1:4,2:4,4:8,8:16
+- Suite cases skipped by vLLM max concurrency guard: 16:32,32:64
+- vLLM reported max model length: 262144
+- vLLM reported max full-context concurrency: 14.34
+- Concurrency safety fraction: 0.85
+- Safe max benchmark concurrency: 12
+- Host RAM guard percent: disabled
+- Startup load watchdog threshold: 6
+- Startup swap watchdog ceiling: 2 GiB
+- Docker memory limit GiB: disabled
+- Docker swap limit GiB: disabled
+- Swap used guard GiB: 4.0
+- Swap growth guard GiB: 1.0
+- Prompt mode: unique
+- Prompt words: 256
+- Max output tokens: 128
+- Warmup requests per case: 1

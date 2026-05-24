@@ -147,3 +147,22 @@ results/<model-size-quant>-ctx32k
 results/<model-size-quant>-ctx200k
 results/<model-size-quant>-ctx500k
 ```
+
+## Agentic And Coding Assessment
+
+Based on the models actually tested in this suite, the best picks for long-running agentic work, coding, and tool use are:
+
+- `nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4`: strongest raw reasoning headroom. Best when the task is hard and quality matters more than speed.
+- `Qwen/Qwen3-Next-80B-A3B-Thinking` / `nvidia/Qwen3-Next-80B-A3B-Thinking-NVFP4`: strong planning and deliberate reasoning, good for multi-step agent loops and code architecture.
+- `RedHatAI/Qwen3.6-35B-A3B-NVFP4`: best balance of quality, speed, and 256K-context behavior. This is the default practical choice for coding and agentic workflows.
+- `nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-NVFP4`: fastest of the serious long-context models we tested. Good for responsive agent loops, but less capable on the hardest problems.
+- `qwen3.6:35b-a3b-q8_0` in Ollama: acceptable if you want a simple local path, but not the best choice for peak agent quality.
+
+Practical ordering:
+
+1. Hardest tasks: `Nemotron Super`
+2. Best overall balance: `RedHatAI Qwen3.6 35B NVFP4`
+3. Best planning-heavy model: `Qwen3-Next 80B Thinking`
+4. Fastest loop: `Nemotron Nano`
+
+For long-running coding and tool-use, start with `RedHatAI/Qwen3.6-35B-A3B-NVFP4`. Move up to `Qwen3-Next-80B-A3B-Thinking` or `NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4` only when the task actually needs the extra depth.
