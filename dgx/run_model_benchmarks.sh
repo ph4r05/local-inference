@@ -33,6 +33,8 @@ MODELS=(
   "vllm-qwen3.6-35b-a3b-256k|RedHatAI/Qwen3.6-35B-A3B-NVFP4|${BENCH_ROOT}/scripts/start-vllm-qwen3.6-35b-a3b-256k.sh"
   "qwen3-next-80b-a3b-thinking|Qwen/Qwen3-Next-80B-A3B-Thinking|${BENCH_ROOT}/scripts/start-qwen3-next-80b-a3b-thinking.sh"
   "nvidia-qwen3-next-80b-a3b-thinking-nvfp4|nvidia/Qwen3-Next-80B-A3B-Thinking-NVFP4|${BENCH_ROOT}/scripts/start-nvidia-qwen3-next-80b-a3b-thinking-nvfp4.sh"
+  "nvidia-gemma-4-26b-a4b-nvfp4|nvidia/Gemma-4-26B-A4B-NVFP4|${BENCH_ROOT}/scripts/start-nvidia-gemma-4-26b-a4b-nvfp4.sh"
+  "nvidia-gemma-4-31b-it-nvfp4|nvidia/Gemma-4-31B-IT-NVFP4|${BENCH_ROOT}/scripts/start-nvidia-gemma-4-31b-it-nvfp4.sh"
   "qwen3.6-27b-fp8|Qwen/Qwen3.6-27B-FP8|${BENCH_ROOT}/scripts/start-qwen3.6-27b-fp8.sh"
   "inferrouter-qwen3.6-27b-nvfp4|inferRouter/Qwen3.6-27B-NVFP4|${BENCH_ROOT}/scripts/start-inferrouter-qwen3.6-27b-nvfp4.sh"
   "qwen3.6-35b-a3b|Qwen/Qwen3.6-35B-A3B|${BENCH_ROOT}/scripts/start-qwen3.6-35b-a3b.sh"

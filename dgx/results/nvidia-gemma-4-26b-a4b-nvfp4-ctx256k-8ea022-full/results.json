@@ -1,0 +1,2792 @@
+[
+  {
+    "abort_reason": null,
+    "aborted": false,
+    "base_url": "http://127.0.0.1:8000",
+    "benchmark_time_s": 4.119325033999985,
+    "concurrency": 1,
+    "errors": [],
+    "failed_requests": 0,
+    "latency_s": {
+      "mean": 4.118393624999953,
+      "p50": 4.118393624999953,
+      "p90": 4.118393624999953,
+      "p99": 4.118393624999953
+    },
+    "max_tokens": 128,
+    "metadata": {
+      "concurrency_safety_fraction": 0.85,
+      "host_ram_guard_pct": null,
+      "swap_growth_guard_gib": 1.0,
+      "swap_used_guard_gib": 4.0,
+      "vllm_max_concurrency": 5.91,
+      "vllm_max_model_len": 262144
+    },
+    "model": "nvidia/Gemma-4-26B-A4B-NVFP4",
+    "output_token_throughput_tok_s": 31.073051760547347,
+    "output_tokens": 128,
+    "per_request_decode_output_tok_s": {
+      "mean": 31.243197009110744,
+      "p50": 31.243197009110744,
+      "p90": 31.243197009110744,
+      "p99": 31.243197009110744
+    },
+    "per_request_end_to_end_output_tok_s": {
+      "mean": 31.08007918985681,
+      "p50": 31.08007918985681,
+      "p90": 31.08007918985681,
+      "p99": 31.08007918985681
+    },
+    "prefill_prompt_tok_s_approx": {
+      "mean": 8465.910330069024,
+      "p50": 8465.910330069024,
+      "p90": 8465.910330069024,
+      "p99": 8465.910330069024
+    },
+    "prompt_count": 1,
+    "prompt_mode": "unique",
+    "prompt_token_throughput_tok_s": 109.96947224631211,
+    "prompt_tokens": 453,
+    "prompt_words": 256,
+    "request_throughput_rps": 0.24275821687927615,
+    "requests": 1,
+    "resources": {
+      "abort_reason": null,
+      "gpu_errors": [],
+      "gpu_memory_used_bytes": {
+        "max_total": null,
+        "mean_total": null
+      },
+      "gpu_memory_used_pct": {
+        "max_gpu_max": null,
+        "max_gpu_mean": null
+      },
+      "gpu_utilization_pct": {
+        "max_gpu_max": 96.0,
+        "max_gpu_mean": 96.0,
+        "mean_across_gpus_mean": 96.0
+      },
+      "last_gpus": [
+        {
+          "index": 0,
+          "memory_total_bytes": null,
+          "memory_used_bytes": null,
+          "memory_used_pct": null,
+          "utilization_gpu_pct": 96.0
+        }
+      ],
+      "last_process_pids": [
+        55432,
+        56622
+      ],
+      "process_cpu_pct_of_host": {
+        "max": 5.656512708225702,
+        "mean": 5.600367198095915
+      },
+      "process_gpu_memory_bytes": {
+        "max": 82484133888,
+        "mean": 82484133888
+      },
+      "process_rss_bytes": {
+        "max": 7489527808,
+        "mean": 7489523712
+      },
+      "sample_count": 3,
+      "sample_interval_s": 1.0,
+      "samples": [
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": null,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489519616,
+          "system_cpu_pct": 6.209313970956432,
+          "system_mem_used_bytes": 93715341312,
+          "system_mem_used_pct": 71.72282128154816,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1885.080455623
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.656512708225702,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489523712,
+          "system_cpu_pct": 6.039649608114339,
+          "system_mem_used_bytes": 93682765824,
+          "system_mem_used_pct": 71.69789040180879,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1886.167697943
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.544221687966128,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489527808,
+          "system_cpu_pct": 6.125290023201857,
+          "system_mem_used_bytes": 93696114688,
+          "system_mem_used_pct": 71.7081066393381,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1887.249905751
+        }
+      ],
+      "system_cpu_pct": {
+        "max": 6.209313970956432,
+        "mean": 6.124751200757543
+      },
+      "system_mem_used_bytes": {
+        "max": 93715341312,
+        "mean": 93698073941.33333
+      },
+      "system_mem_used_pct": {
+        "max": 71.72282128154816,
+        "mean": 71.70960610756502
+      },
+      "system_swap_used_bytes": {
+        "max": 0,
+        "mean": 0
+      },
+      "system_swap_used_pct": {
+        "max": 0.0,
+        "mean": 0.0
+      }
+    },
+    "run_config": {
+      "backend": "vllm",
+      "concurrency_safety_fraction": 0.85,
+      "container_name": "vllm-bench",
+      "cuda_visible_devices": 0,
+      "filter_suite_by_vllm_max": 1,
+      "gpu_device": 0,
+      "guard_grace_samples": 2,
+      "host": "0.0.0.0",
+      "include_super": 0,
+      "legacy_container_name": "vllm-nemotron",
+      "max_host_ram_pct": 0,
+      "max_model_len": 262144,
+      "max_swap_growth_gib": 1.0,
+      "max_swap_used_gib": 4.0,
+      "max_tokens": 128,
+      "model_id": "nvidia/Gemma-4-26B-A4B-NVFP4",
+      "port": 8000,
+      "prompt_mode": "unique",
+      "prompt_words": 256,
+      "resource_interval": 1.0,
+      "slug": "nvidia-gemma-4-26b-a4b-nvfp4",
+      "start_script": "/home/ph4r05/benchmark/scripts/start-nvidia-gemma-4-26b-a4b-nvfp4.sh",
+      "stop_after_each": 1,
+      "suite_cases": "1:1,1:2,1:4,2:4,4:8,8:16,16:32,32:64",
+      "tensor_parallel_size": 1,
+      "vllm_docker_memory_limit_gib": "",
+      "vllm_docker_swap_limit_gib": "",
+      "vllm_gpu_memory_utilization": 0.75,
+      "vllm_image": "nvcr.io/nvidia/vllm:26.04-py3",
+      "vllm_max_num_batched_tokens": 65536,
+      "vllm_max_num_seqs": 1,
+      "vllm_max_num_seqs_cap": 16,
+      "vllm_startup_load_threshold": 6,
+      "vllm_startup_swap_used_gib": 2,
+      "vllm_target_batch_context_tokens": 262144,
+      "warmup": 1
+    },
+    "successful_requests": 1,
+    "total_token_throughput_tok_s": 141.04252400685945,
+    "total_tokens": 581,
+    "ttft_s": {
+      "mean": 0.05350871700011339,
+      "p50": 0.05350871700011339,
+      "p90": 0.05350871700011339,
+      "p99": 0.05350871700011339
+    },
+    "wall_time_s": 4.119325033999985
+  },
+  {
+    "abort_reason": null,
+    "aborted": false,
+    "base_url": "http://127.0.0.1:8000",
+    "benchmark_time_s": 8.430434443000195,
+    "concurrency": 1,
+    "errors": [],
+    "failed_requests": 0,
+    "latency_s": {
+      "mean": 4.214689285499958,
+      "p50": 4.214689285499958,
+      "p90": 4.272082013099885,
+      "p99": 4.284995376809868
+    },
+    "max_tokens": 128,
+    "metadata": {
+      "concurrency_safety_fraction": 0.85,
+      "host_ram_guard_pct": null,
+      "swap_growth_guard_gib": 1.0,
+      "swap_used_guard_gib": 4.0,
+      "vllm_max_concurrency": 5.91,
+      "vllm_max_model_len": 262144
+    },
+    "model": "nvidia/Gemma-4-26B-A4B-NVFP4",
+    "output_token_throughput_tok_s": 30.36616935116046,
+    "output_tokens": 256,
+    "per_request_decode_output_tok_s": {
+      "mean": 31.109666268283576,
+      "p50": 31.109666268283576,
+      "p90": 31.16431822854612,
+      "p99": 31.176614919605193
+    },
+    "per_request_end_to_end_output_tok_s": {
+      "mean": 30.378774874659136,
+      "p50": 30.378774874659136,
+      "p90": 30.792452048252727,
+      "p99": 30.885529412311286
+    },
+    "prefill_prompt_tok_s_approx": {
+      "mean": 5513.379469264853,
+      "p50": 5513.379469264853,
+      "p90": 8121.627159103133,
+      "p99": 8708.482889316747
+    },
+    "prompt_count": 2,
+    "prompt_mode": "unique",
+    "prompt_token_throughput_tok_s": 110.67045314309651,
+    "prompt_tokens": 933,
+    "prompt_words": 256,
+    "request_throughput_rps": 0.23723569805594108,
+    "requests": 2,
+    "resources": {
+      "abort_reason": null,
+      "gpu_errors": [],
+      "gpu_memory_used_bytes": {
+        "max_total": null,
+        "mean_total": null
+      },
+      "gpu_memory_used_pct": {
+        "max_gpu_max": null,
+        "max_gpu_mean": null
+      },
+      "gpu_utilization_pct": {
+        "max_gpu_max": 96.0,
+        "max_gpu_mean": 96.0,
+        "mean_across_gpus_mean": 96.0
+      },
+      "last_gpus": [
+        {
+          "index": 0,
+          "memory_total_bytes": null,
+          "memory_used_bytes": null,
+          "memory_used_pct": null,
+          "utilization_gpu_pct": 96.0
+        }
+      ],
+      "last_process_pids": [
+        55432,
+        56622
+      ],
+      "process_cpu_pct_of_host": {
+        "max": 5.707673552797944,
+        "mean": 5.565896682019139
+      },
+      "process_gpu_memory_bytes": {
+        "max": 82484133888,
+        "mean": 82484133888
+      },
+      "process_rss_bytes": {
+        "max": 7489683456,
+        "mean": 7489657709.714286
+      },
+      "sample_count": 7,
+      "sample_interval_s": 1.0,
+      "samples": [
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": null,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489626112,
+          "system_cpu_pct": 6.265664160401007,
+          "system_mem_used_bytes": 93649268736,
+          "system_mem_used_pct": 71.6722541972937,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1890.23783908
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.57345003556739,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489634304,
+          "system_cpu_pct": 11.188486536675956,
+          "system_mem_used_bytes": 93638025216,
+          "system_mem_used_pct": 71.66364923502982,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1891.323342666
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.649490378134817,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489642496,
+          "system_cpu_pct": 6.267409470752094,
+          "system_mem_used_bytes": 93648121856,
+          "system_mem_used_pct": 71.67137645979501,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1892.403086075
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.239425089098561,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489667072,
+          "system_cpu_pct": 6.039649608114339,
+          "system_mem_used_bytes": 93640523776,
+          "system_mem_used_pct": 71.66556144886624,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1893.490991695
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.707673552797944,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489675264,
+          "system_cpu_pct": 6.101537028411741,
+          "system_mem_used_bytes": 93668823040,
+          "system_mem_used_pct": 71.68721962164624,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1894.568488497
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.583166425803384,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489675264,
+          "system_cpu_pct": 6.348470806302132,
+          "system_mem_used_bytes": 93691219968,
+          "system_mem_used_pct": 71.7043605810848,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1895.65210298
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.64217461071274,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489683456,
+          "system_cpu_pct": 6.360259981429895,
+          "system_mem_used_bytes": 93673889792,
+          "system_mem_used_pct": 71.69109734052435,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1896.733246408
+        }
+      ],
+      "system_cpu_pct": {
+        "max": 11.188486536675956,
+        "mean": 6.938782513155309
+      },
+      "system_mem_used_bytes": {
+        "max": 93691219968,
+        "mean": 93658553197.71428
+      },
+      "system_mem_used_pct": {
+        "max": 71.7043605810848,
+        "mean": 71.67935984060574
+      },
+      "system_swap_used_bytes": {
+        "max": 0,
+        "mean": 0
+      },
+      "system_swap_used_pct": {
+        "max": 0.0,
+        "mean": 0.0
+      }
+    },
+    "run_config": {
+      "backend": "vllm",
+      "concurrency_safety_fraction": 0.85,
+      "container_name": "vllm-bench",
+      "cuda_visible_devices": 0,
+      "filter_suite_by_vllm_max": 1,
+      "gpu_device": 0,
+      "guard_grace_samples": 2,
+      "host": "0.0.0.0",
+      "include_super": 0,
+      "legacy_container_name": "vllm-nemotron",
+      "max_host_ram_pct": 0,
+      "max_model_len": 262144,
+      "max_swap_growth_gib": 1.0,
+      "max_swap_used_gib": 4.0,
+      "max_tokens": 128,
+      "model_id": "nvidia/Gemma-4-26B-A4B-NVFP4",
+      "port": 8000,
+      "prompt_mode": "unique",
+      "prompt_words": 256,
+      "resource_interval": 1.0,
+      "slug": "nvidia-gemma-4-26b-a4b-nvfp4",
+      "start_script": "/home/ph4r05/benchmark/scripts/start-nvidia-gemma-4-26b-a4b-nvfp4.sh",
+      "stop_after_each": 1,
+      "suite_cases": "1:1,1:2,1:4,2:4,4:8,8:16,16:32,32:64",
+      "tensor_parallel_size": 1,
+      "vllm_docker_memory_limit_gib": "",
+      "vllm_docker_swap_limit_gib": "",
+      "vllm_gpu_memory_utilization": 0.75,
+      "vllm_image": "nvcr.io/nvidia/vllm:26.04-py3",
+      "vllm_max_num_batched_tokens": 65536,
+      "vllm_max_num_seqs": 1,
+      "vllm_max_num_seqs_cap": 16,
+      "vllm_startup_load_threshold": 6,
+      "vllm_startup_swap_used_gib": 2,
+      "vllm_target_batch_context_tokens": 262144,
+      "warmup": 1
+    },
+    "successful_requests": 2,
+    "total_token_throughput_tok_s": 141.03662249425696,
+    "total_tokens": 1189,
+    "ttft_s": {
+      "mean": 0.1323371534999751,
+      "p50": 0.1323371534999751,
+      "p90": 0.19690156029992067,
+      "p99": 0.21142855182990844
+    },
+    "wall_time_s": 8.430434443000195
+  },
+  {
+    "abort_reason": null,
+    "aborted": false,
+    "base_url": "http://127.0.0.1:8000",
+    "benchmark_time_s": 16.801431448999892,
+    "concurrency": 1,
+    "errors": [],
+    "failed_requests": 0,
+    "latency_s": {
+      "mean": 4.200068658250018,
+      "p50": 4.19614118100003,
+      "p90": 4.2533842708999146,
+      "p99": 4.2677776136898276
+    },
+    "max_tokens": 128,
+    "metadata": {
+      "concurrency_safety_fraction": 0.85,
+      "host_ram_guard_pct": null,
+      "swap_growth_guard_gib": 1.0,
+      "swap_used_guard_gib": 4.0,
+      "vllm_max_concurrency": 5.91,
+      "vllm_max_model_len": 262144
+    },
+    "model": "nvidia/Gemma-4-26B-A4B-NVFP4",
+    "output_token_throughput_tok_s": 30.4735939645474,
+    "output_tokens": 512,
+    "per_request_decode_output_tok_s": {
+      "mean": 30.974333052096416,
+      "p50": 31.046448079679017,
+      "p90": 31.098919655245282,
+      "p99": 31.109084853882496
+    },
+    "per_request_end_to_end_output_tok_s": {
+      "mean": 30.479745871183006,
+      "p50": 30.504904671937943,
+      "p90": 30.84468347188881,
+      "p99": 30.91986471755487
+    },
+    "prefill_prompt_tok_s_approx": {
+      "mean": 5505.360015535014,
+      "p50": 4777.59465989558,
+      "p90": 7921.650864039582,
+      "p99": 8722.74155527075
+    },
+    "prompt_count": 4,
+    "prompt_mode": "unique",
+    "prompt_token_throughput_tok_s": 113.7403087231447,
+    "prompt_tokens": 1911,
+    "prompt_words": 256,
+    "request_throughput_rps": 0.23807495284802657,
+    "requests": 4,
+    "resources": {
+      "abort_reason": null,
+      "gpu_errors": [],
+      "gpu_memory_used_bytes": {
+        "max_total": null,
+        "mean_total": null
+      },
+      "gpu_memory_used_pct": {
+        "max_gpu_max": null,
+        "max_gpu_mean": null
+      },
+      "gpu_utilization_pct": {
+        "max_gpu_max": 96.0,
+        "max_gpu_mean": 96.0,
+        "mean_across_gpus_mean": 96.0
+      },
+      "last_gpus": [
+        {
+          "index": 0,
+          "memory_total_bytes": null,
+          "memory_used_bytes": null,
+          "memory_used_pct": null,
+          "utilization_gpu_pct": 96.0
+        }
+      ],
+      "last_process_pids": [
+        55432,
+        56622
+      ],
+      "process_cpu_pct_of_host": {
+        "max": 5.695533665753792,
+        "mean": 5.576214525118454
+      },
+      "process_gpu_memory_bytes": {
+        "max": 82484133888,
+        "mean": 82484133888
+      },
+      "process_rss_bytes": {
+        "max": 7489843200,
+        "mean": 7489791863.466666
+      },
+      "sample_count": 15,
+      "sample_interval_s": 1.0,
+      "samples": [
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": null,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489708032,
+          "system_cpu_pct": 5.658487731597395,
+          "system_mem_used_bytes": 93632942080,
+          "system_mem_used_pct": 71.65975897704459,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1899.713509857
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.559789986569811,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489708032,
+          "system_cpu_pct": 6.313364055299542,
+          "system_mem_used_bytes": 93633593344,
+          "system_mem_used_pct": 71.66025740655277,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1900.801680456
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.531070996763904,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489708032,
+          "system_cpu_pct": 6.38992537313433,
+          "system_mem_used_bytes": 93646942208,
+          "system_mem_used_pct": 71.67047364408208,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1901.877421484
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.490762564352814,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489789952,
+          "system_cpu_pct": 9.66850828729282,
+          "system_mem_used_bytes": 93657780224,
+          "system_mem_used_pct": 71.67876826344464,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1902.970165876
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.627822350001178,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489789952,
+          "system_cpu_pct": 8.087891538101921,
+          "system_mem_used_bytes": 93643628544,
+          "system_mem_used_pct": 71.66793760966625,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1904.045182041
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.547755843859559,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489789952,
+          "system_cpu_pct": 6.264394288346386,
+          "system_mem_used_bytes": 93627580416,
+          "system_mem_used_pct": 71.65565555423825,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1905.13571309
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.544561019620675,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489789952,
+          "system_cpu_pct": 6.076066790352508,
+          "system_mem_used_bytes": 93635031040,
+          "system_mem_used_pct": 71.6613577132029,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1906.217854666
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.625101239037935,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489806336,
+          "system_cpu_pct": 6.019598693420436,
+          "system_mem_used_bytes": 93652852736,
+          "system_mem_used_pct": 71.67499712697708,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1907.293390864
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.5522984824328345,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489806336,
+          "system_cpu_pct": 6.5807639208467545,
+          "system_mem_used_bytes": 93627916288,
+          "system_mem_used_pct": 71.65591260593429,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1908.38302969
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.6433277978377046,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489810432,
+          "system_cpu_pct": 6.169429097605894,
+          "system_mem_used_bytes": 93603344384,
+          "system_mem_used_pct": 71.63710708002502,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1909.472812212
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.5927680052622994,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489810432,
+          "system_cpu_pct": 5.990783410138246,
+          "system_mem_used_bytes": 93595070464,
+          "system_mem_used_pct": 71.63077483092738,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1910.563506479
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.509423823538165,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489839104,
+          "system_cpu_pct": 6.123388581952116,
+          "system_mem_used_bytes": 93602217984,
+          "system_mem_used_pct": 71.63624501641024,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1911.652549579
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.5325043482457295,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489839104,
+          "system_cpu_pct": 6.232813932172321,
+          "system_mem_used_bytes": 93619212288,
+          "system_mem_used_pct": 71.64925120527465,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1912.746086903
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.614283228381956,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489839104,
+          "system_cpu_pct": 10.745715609078276,
+          "system_mem_used_bytes": 93593501696,
+          "system_mem_used_pct": 71.62957421142025,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1913.832601379
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.695533665753792,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489843200,
+          "system_cpu_pct": 12.777777777777777,
+          "system_mem_used_bytes": 93596086272,
+          "system_mem_used_pct": 71.63155225556908,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1914.921173647
+        }
+      ],
+      "system_cpu_pct": {
+        "max": 12.777777777777777,
+        "mean": 7.273260605807781
+      },
+      "system_mem_used_bytes": {
+        "max": 93657780224,
+        "mean": 93624513331.2
+      },
+      "system_mem_used_pct": {
+        "max": 71.67876826344464,
+        "mean": 71.65330823338464
+      },
+      "system_swap_used_bytes": {
+        "max": 0,
+        "mean": 0
+      },
+      "system_swap_used_pct": {
+        "max": 0.0,
+        "mean": 0.0
+      }
+    },
+    "run_config": {
+      "backend": "vllm",
+      "concurrency_safety_fraction": 0.85,
+      "container_name": "vllm-bench",
+      "cuda_visible_devices": 0,
+      "filter_suite_by_vllm_max": 1,
+      "gpu_device": 0,
+      "guard_grace_samples": 2,
+      "host": "0.0.0.0",
+      "include_super": 0,
+      "legacy_container_name": "vllm-nemotron",
+      "max_host_ram_pct": 0,
+      "max_model_len": 262144,
+      "max_swap_growth_gib": 1.0,
+      "max_swap_used_gib": 4.0,
+      "max_tokens": 128,
+      "model_id": "nvidia/Gemma-4-26B-A4B-NVFP4",
+      "port": 8000,
+      "prompt_mode": "unique",
+      "prompt_words": 256,
+      "resource_interval": 1.0,
+      "slug": "nvidia-gemma-4-26b-a4b-nvfp4",
+      "start_script": "/home/ph4r05/benchmark/scripts/start-nvidia-gemma-4-26b-a4b-nvfp4.sh",
+      "stop_after_each": 1,
+      "suite_cases": "1:1,1:2,1:4,2:4,4:8,8:16,16:32,32:64",
+      "tensor_parallel_size": 1,
+      "vllm_docker_memory_limit_gib": "",
+      "vllm_docker_swap_limit_gib": "",
+      "vllm_gpu_memory_utilization": 0.75,
+      "vllm_image": "nvcr.io/nvidia/vllm:26.04-py3",
+      "vllm_max_num_batched_tokens": 65536,
+      "vllm_max_num_seqs": 1,
+      "vllm_max_num_seqs_cap": 16,
+      "vllm_startup_load_threshold": 6,
+      "vllm_startup_swap_used_gib": 2,
+      "vllm_target_batch_context_tokens": 262144,
+      "warmup": 1
+    },
+    "successful_requests": 4,
+    "total_token_throughput_tok_s": 144.2139026876921,
+    "total_tokens": 2423,
+    "ttft_s": {
+      "mean": 0.09978289400004314,
+      "p50": 0.10695764399997643,
+      "p90": 0.13320245420011362,
+      "p99": 0.13374714572015137
+    },
+    "wall_time_s": 16.801431448999892
+  },
+  {
+    "abort_reason": null,
+    "aborted": false,
+    "base_url": "http://127.0.0.1:8000",
+    "benchmark_time_s": 16.63173718600001,
+    "concurrency": 2,
+    "errors": [],
+    "failed_requests": 0,
+    "latency_s": {
+      "mean": 7.273265466999987,
+      "p50": 8.29742282999996,
+      "p90": 8.334541836800009,
+      "p99": 8.344210961780018
+    },
+    "max_tokens": 128,
+    "metadata": {
+      "concurrency_safety_fraction": 0.85,
+      "host_ram_guard_pct": null,
+      "swap_growth_guard_gib": 1.0,
+      "swap_used_guard_gib": 4.0,
+      "vllm_max_concurrency": 5.91,
+      "vllm_max_model_len": 262144
+    },
+    "model": "nvidia/Gemma-4-26B-A4B-NVFP4",
+    "output_token_throughput_tok_s": 30.784517231969186,
+    "output_tokens": 512,
+    "per_request_decode_output_tok_s": {
+      "mean": 30.97098754322963,
+      "p50": 31.02622565507933,
+      "p90": 31.08403798031862,
+      "p99": 31.093934812317308
+    },
+    "per_request_end_to_end_output_tok_s": {
+      "mean": 19.25315654518386,
+      "p50": 15.426509245401768,
+      "p90": 26.209798475025764,
+      "p99": 30.360425266095767
+    },
+    "prefill_prompt_tok_s_approx": {
+      "mean": 1832.328561307662,
+      "p50": 116.086985024505,
+      "p90": 4927.5476693079645,
+      "p99": 6783.0239563719815
+    },
+    "prompt_count": 4,
+    "prompt_mode": "unique",
+    "prompt_token_throughput_tok_s": 114.90080552791625,
+    "prompt_tokens": 1911,
+    "prompt_words": 256,
+    "request_throughput_rps": 0.24050404087475927,
+    "requests": 4,
+    "resources": {
+      "abort_reason": null,
+      "gpu_errors": [],
+      "gpu_memory_used_bytes": {
+        "max_total": null,
+        "mean_total": null
+      },
+      "gpu_memory_used_pct": {
+        "max_gpu_max": null,
+        "max_gpu_mean": null
+      },
+      "gpu_utilization_pct": {
+        "max_gpu_max": 96.0,
+        "max_gpu_mean": 95.93333333333334,
+        "mean_across_gpus_mean": 95.93333333333334
+      },
+      "last_gpus": [
+        {
+          "index": 0,
+          "memory_total_bytes": null,
+          "memory_used_bytes": null,
+          "memory_used_pct": null,
+          "utilization_gpu_pct": 96.0
+        }
+      ],
+      "last_process_pids": [
+        55432,
+        56622
+      ],
+      "process_cpu_pct_of_host": {
+        "max": 5.74437486631067,
+        "mean": 5.620206933057418
+      },
+      "process_gpu_memory_bytes": {
+        "max": 82484133888,
+        "mean": 82484133888
+      },
+      "process_rss_bytes": {
+        "max": 7489916928,
+        "mean": 7489905186.133333
+      },
+      "sample_count": 15,
+      "sample_interval_s": 1.0,
+      "samples": [
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": null,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489871872,
+          "system_cpu_pct": 5.9619238476953935,
+          "system_mem_used_bytes": 93623586816,
+          "system_mem_used_pct": 71.65259914687677,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1917.584551288
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.607521123205554,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489871872,
+          "system_cpu_pct": 6.000000000000005,
+          "system_mem_used_bytes": 93631414272,
+          "system_mem_used_pct": 71.65858970530527,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1918.663459395
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.677925985587313,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489871872,
+          "system_cpu_pct": 6.302131603336425,
+          "system_mem_used_bytes": 93625610240,
+          "system_mem_used_pct": 71.65414772660658,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1919.746601376
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.74437486631067,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489908736,
+          "system_cpu_pct": 6.691449814126393,
+          "system_mem_used_bytes": 93593710592,
+          "system_mem_used_pct": 71.62973408503609,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1920.825918124
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.480410792951251,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489908736,
+          "system_cpu_pct": 6.192236598890943,
+          "system_mem_used_bytes": 93590183936,
+          "system_mem_used_pct": 71.62703504222763,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1921.911603162
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.683656714532087,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489908736,
+          "system_cpu_pct": 5.940130963517309,
+          "system_mem_used_bytes": 93591089152,
+          "system_mem_used_pct": 71.62772782789624,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1922.984855877
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.521591469315359,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489908736,
+          "system_cpu_pct": 6.140350877192979,
+          "system_mem_used_bytes": 93594828800,
+          "system_mem_used_pct": 71.6305898790973,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1924.071499109
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 95.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.626498470863093,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489912832,
+          "system_cpu_pct": 6.3396575659416925,
+          "system_mem_used_bytes": 93603794944,
+          "system_mem_used_pct": 71.63745190547093,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1925.15565474
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.608082072740281,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489912832,
+          "system_cpu_pct": 6.508600650860064,
+          "system_mem_used_bytes": 93599592448,
+          "system_mem_used_pct": 71.63423562449361,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1926.234454929
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.699495807310263,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489916928,
+          "system_cpu_pct": 10.89385474860335,
+          "system_mem_used_bytes": 93614784512,
+          "system_mem_used_pct": 71.64586251157438,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1927.313497744
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.551142285293879,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489916928,
+          "system_cpu_pct": 7.699400645458732,
+          "system_mem_used_bytes": 93612277760,
+          "system_mem_used_pct": 71.6439440281844,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1928.403363521
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.724416147592988,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489916928,
+          "system_cpu_pct": 6.163113994439295,
+          "system_mem_used_bytes": 93600722944,
+          "system_mem_used_pct": 71.63510082288518,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1929.486443409
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.495719127447291,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489916928,
+          "system_cpu_pct": 6.0689655172413755,
+          "system_mem_used_bytes": 93600894976,
+          "system_mem_used_pct": 71.63523248350998,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1930.57820226
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.5406772314185915,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489916928,
+          "system_cpu_pct": 6.394810009267838,
+          "system_mem_used_bytes": 93593731072,
+          "system_mem_used_pct": 71.62974975891998,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1931.661102373
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.721384968235227,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489916928,
+          "system_cpu_pct": 6.442577030812324,
+          "system_mem_used_bytes": 93597102080,
+          "system_mem_used_pct": 71.63232968021076,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1932.736016932
+        }
+      ],
+      "system_cpu_pct": {
+        "max": 10.89385474860335,
+        "mean": 6.649280257825608
+      },
+      "system_mem_used_bytes": {
+        "max": 93631414272,
+        "mean": 93604888302.93333
+      },
+      "system_mem_used_pct": {
+        "max": 71.65858970530527,
+        "mean": 71.63828868188634
+      },
+      "system_swap_used_bytes": {
+        "max": 0,
+        "mean": 0
+      },
+      "system_swap_used_pct": {
+        "max": 0.0,
+        "mean": 0.0
+      }
+    },
+    "run_config": {
+      "backend": "vllm",
+      "concurrency_safety_fraction": 0.85,
+      "container_name": "vllm-bench",
+      "cuda_visible_devices": 0,
+      "filter_suite_by_vllm_max": 1,
+      "gpu_device": 0,
+      "guard_grace_samples": 2,
+      "host": "0.0.0.0",
+      "include_super": 0,
+      "legacy_container_name": "vllm-nemotron",
+      "max_host_ram_pct": 0,
+      "max_model_len": 262144,
+      "max_swap_growth_gib": 1.0,
+      "max_swap_used_gib": 4.0,
+      "max_tokens": 128,
+      "model_id": "nvidia/Gemma-4-26B-A4B-NVFP4",
+      "port": 8000,
+      "prompt_mode": "unique",
+      "prompt_words": 256,
+      "resource_interval": 1.0,
+      "slug": "nvidia-gemma-4-26b-a4b-nvfp4",
+      "start_script": "/home/ph4r05/benchmark/scripts/start-nvidia-gemma-4-26b-a4b-nvfp4.sh",
+      "stop_after_each": 1,
+      "suite_cases": "1:1,1:2,1:4,2:4,4:8,8:16,16:32,32:64",
+      "tensor_parallel_size": 1,
+      "vllm_docker_memory_limit_gib": "",
+      "vllm_docker_swap_limit_gib": "",
+      "vllm_gpu_memory_utilization": 0.75,
+      "vllm_image": "nvcr.io/nvidia/vllm:26.04-py3",
+      "vllm_max_num_batched_tokens": 65536,
+      "vllm_max_num_seqs": 1,
+      "vllm_max_num_seqs_cap": 16,
+      "vllm_startup_load_threshold": 6,
+      "vllm_startup_swap_used_gib": 2,
+      "vllm_target_batch_context_tokens": 262144,
+      "warmup": 1
+    },
+    "successful_requests": 4,
+    "total_token_throughput_tok_s": 145.68532275988542,
+    "total_tokens": 2423,
+    "ttft_s": {
+      "mean": 3.172569249499986,
+      "p50": 4.186935981999909,
+      "p90": 4.232298764999996,
+      "p99": 4.246184651700037
+    },
+    "wall_time_s": 16.63173718600001
+  },
+  {
+    "abort_reason": null,
+    "aborted": false,
+    "base_url": "http://127.0.0.1:8000",
+    "benchmark_time_s": 33.582722074,
+    "concurrency": 4,
+    "errors": [],
+    "failed_requests": 0,
+    "latency_s": {
+      "mean": 13.61739113437497,
+      "p50": 16.68791360199998,
+      "p90": 16.898067049099996,
+      "p99": 16.948807366909993
+    },
+    "max_tokens": 128,
+    "metadata": {
+      "concurrency_safety_fraction": 0.85,
+      "host_ram_guard_pct": null,
+      "swap_growth_guard_gib": 1.0,
+      "swap_used_guard_gib": 4.0,
+      "vllm_max_concurrency": 5.91,
+      "vllm_max_model_len": 262144
+    },
+    "model": "nvidia/Gemma-4-26B-A4B-NVFP4",
+    "output_token_throughput_tok_s": 30.49187012725179,
+    "output_tokens": 1024,
+    "per_request_decode_output_tok_s": {
+      "mean": 30.902659080095642,
+      "p50": 30.975367531196056,
+      "p90": 31.006580654886594,
+      "p99": 31.04130003092099
+    },
+    "per_request_end_to_end_output_tok_s": {
+      "mean": 11.828338160172082,
+      "p50": 7.670332621559471,
+      "p90": 20.020463808085196,
+      "p99": 29.82266464377465
+    },
+    "prefill_prompt_tok_s_approx": {
+      "mean": 1178.1969688844185,
+      "p50": 38.90691213995126,
+      "p90": 2798.0409851551685,
+      "p99": 8434.015944931205
+    },
+    "prompt_count": 8,
+    "prompt_mode": "unique",
+    "prompt_token_throughput_tok_s": 115.14849783406511,
+    "prompt_tokens": 3867,
+    "prompt_words": 256,
+    "request_throughput_rps": 0.2382177353691546,
+    "requests": 8,
+    "resources": {
+      "abort_reason": null,
+      "gpu_errors": [],
+      "gpu_memory_used_bytes": {
+        "max_total": null,
+        "mean_total": null
+      },
+      "gpu_memory_used_pct": {
+        "max_gpu_max": null,
+        "max_gpu_mean": null
+      },
+      "gpu_utilization_pct": {
+        "max_gpu_max": 96.0,
+        "max_gpu_mean": 95.86666666666666,
+        "mean_across_gpus_mean": 95.86666666666666
+      },
+      "last_gpus": [
+        {
+          "index": 0,
+          "memory_total_bytes": null,
+          "memory_used_bytes": null,
+          "memory_used_pct": null,
+          "utilization_gpu_pct": 96.0
+        }
+      ],
+      "last_process_pids": [
+        55432,
+        56622
+      ],
+      "process_cpu_pct_of_host": {
+        "max": 5.655996052152524,
+        "mean": 5.514140064794041
+      },
+      "process_gpu_memory_bytes": {
+        "max": 82484133888,
+        "mean": 82484133888
+      },
+      "process_rss_bytes": {
+        "max": 7490093056,
+        "mean": 7490052369.066667
+      },
+      "sample_count": 30,
+      "sample_interval_s": 1.0,
+      "samples": [
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": null,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489978368,
+          "system_cpu_pct": 5.814536340852127,
+          "system_mem_used_bytes": 93556805632,
+          "system_mem_used_pct": 71.6014897462392,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1935.258876775
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.605427356734831,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489978368,
+          "system_cpu_pct": 6.093023255813956,
+          "system_mem_used_bytes": 93574873088,
+          "system_mem_used_pct": 71.61531724662022,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1936.338187881
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.584843057482464,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7489978368,
+          "system_cpu_pct": 6.247129076711067,
+          "system_mem_used_bytes": 93606936576,
+          "system_mem_used_pct": 71.63985627926196,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1937.430429854
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.6188230321035535,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490023424,
+          "system_cpu_pct": 6.475485661424607,
+          "system_mem_used_bytes": 93630881792,
+          "system_mem_used_pct": 71.65818218432375,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1938.516066466
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.556476976591107,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490023424,
+          "system_cpu_pct": 11.080332409972304,
+          "system_mem_used_bytes": 93591207936,
+          "system_mem_used_pct": 71.6278187364229,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1939.604885879
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.573682149615496,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490023424,
+          "system_cpu_pct": 7.310344827586201,
+          "system_mem_used_bytes": 93588905984,
+          "system_mem_used_pct": 71.62605699187196,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1940.69931499
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.597224650107064,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490023424,
+          "system_cpu_pct": 6.261510128913439,
+          "system_mem_used_bytes": 93581062144,
+          "system_mem_used_pct": 71.62005389433632,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1941.78914082
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.56039761515535,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490052096,
+          "system_cpu_pct": 6.088560885608851,
+          "system_mem_used_bytes": 93587095552,
+          "system_mem_used_pct": 71.62467142053475,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1942.877192506
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.655996052152524,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490052096,
+          "system_cpu_pct": 6.281991624011162,
+          "system_mem_used_bytes": 93597360128,
+          "system_mem_used_pct": 71.63252717114797,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1943.955693966
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.575822395048923,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490052096,
+          "system_cpu_pct": 6.611188164586224,
+          "system_mem_used_bytes": 93614166016,
+          "system_mem_used_pct": 71.64538916028044,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1945.0407357
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.617390444049999,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490052096,
+          "system_cpu_pct": 6.099815157116451,
+          "system_mem_used_bytes": 93594836992,
+          "system_mem_used_pct": 71.63059614865087,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1946.126649179
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.564645114643006,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490056192,
+          "system_cpu_pct": 5.952930318412553,
+          "system_mem_used_bytes": 93586161664,
+          "system_mem_used_pct": 71.62395669142869,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1947.213870354
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.448248276787498,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490056192,
+          "system_cpu_pct": 6.0661764705882355,
+          "system_mem_used_bytes": 93584220160,
+          "system_mem_used_pct": 71.62247080723449,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1948.305964491
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.542139600723233,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490056192,
+          "system_cpu_pct": 6.116774791473589,
+          "system_mem_used_bytes": 93600038912,
+          "system_mem_used_pct": 71.63457731516274,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1949.388578866
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.607280665234254,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490056192,
+          "system_cpu_pct": 6.2761506276150625,
+          "system_mem_used_bytes": 93609910272,
+          "system_mem_used_pct": 71.64213212720497,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1950.46753324
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 92.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.485527693164816,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490056192,
+          "system_cpu_pct": 10.111317254174402,
+          "system_mem_used_bytes": 93592813568,
+          "system_mem_used_pct": 71.62904756892105,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1951.552205551
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.469855021318112,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490056192,
+          "system_cpu_pct": 8.32177531206657,
+          "system_mem_used_bytes": 93591695360,
+          "system_mem_used_pct": 71.62819177485983,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1952.639985753
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.491177057262053,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490056192,
+          "system_cpu_pct": 6.015733456732997,
+          "system_mem_used_bytes": 93614759936,
+          "system_mem_used_pct": 71.6458437029137,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1953.723542145
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.497589486139831,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490056192,
+          "system_cpu_pct": 6.0717571297148165,
+          "system_mem_used_bytes": 93599633408,
+          "system_mem_used_pct": 71.63426697226143,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1954.814929564
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.495543513095908,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490068480,
+          "system_cpu_pct": 6.379072969251953,
+          "system_mem_used_bytes": 93591756800,
+          "system_mem_used_pct": 71.62823879651154,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1955.906723303
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.394252670635769,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490068480,
+          "system_cpu_pct": 6.198347107438018,
+          "system_mem_used_bytes": 93591838720,
+          "system_mem_used_pct": 71.62830149204717,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1957.000480003
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.625332248490542,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490068480,
+          "system_cpu_pct": 5.882352941176472,
+          "system_mem_used_bytes": 93613363200,
+          "system_mem_used_pct": 71.64477474403137,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1958.084860397
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.350623421394579,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490068480,
+          "system_cpu_pct": 6.143970655662545,
+          "system_mem_used_bytes": 93592014848,
+          "system_mem_used_pct": 71.62843628744875,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1959.178190938
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.4552487058694865,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490080768,
+          "system_cpu_pct": 5.939675174013925,
+          "system_mem_used_bytes": 93602725888,
+          "system_mem_used_pct": 71.63663372873108,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1960.259718164
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.504605432263399,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490080768,
+          "system_cpu_pct": 6.028531983433039,
+          "system_mem_used_bytes": 93573836800,
+          "system_mem_used_pct": 71.61452414809463,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1961.349714545
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.45801018106289,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490080768,
+          "system_cpu_pct": 6.264394288346386,
+          "system_mem_used_bytes": 93584183296,
+          "system_mem_used_pct": 71.62244259424345,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1962.439855421
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.355008239050431,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490088960,
+          "system_cpu_pct": 8.805901337021671,
+          "system_mem_used_bytes": 93555294208,
+          "system_mem_used_pct": 71.600333013607,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1963.532290715
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.413121858756679,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490093056,
+          "system_cpu_pct": 8.22490706319703,
+          "system_mem_used_bytes": 93578141696,
+          "system_mem_used_pct": 71.61781879849147,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1964.612997958
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.395770201050294,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490093056,
+          "system_cpu_pct": 6.009174311926602,
+          "system_mem_used_bytes": 93606604800,
+          "system_mem_used_pct": 71.6396023623427,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1965.706447045
+        },
+        {
+          "gpu_error": null,
+          "gpus": [
+            {
+              "index": 0,
+              "memory_total_bytes": null,
+              "memory_used_bytes": null,
+              "memory_used_pct": null,
+              "utilization_gpu_pct": 96.0
+            }
+          ],
+          "process_count": 2,
+          "process_cpu_pct_of_host": 5.40999876304308,
+          "process_gpu_error": null,
+          "process_gpu_memory_bytes": 82484133888,
+          "process_match": "vllm",
+          "process_pids": [
+            55432,
+            56622
+          ],
+          "process_rss_bytes": 7490093056,
+          "system_cpu_pct": 5.936920222634512,
+          "system_mem_used_bytes": 93605588992,
+          "system_mem_used_pct": 71.63882493770102,
+          "system_swap_used_bytes": 0,
+          "system_swap_used_pct": 0.0,
+          "t_s": 1966.787778161
+        }
+      ],
+      "system_cpu_pct": {
+        "max": 11.080332409972304,
+        "mean": 6.703659364915892
+      },
+      "system_mem_used_bytes": {
+        "max": 93630881792,
+        "mean": 93593290478.93333
+      },
+      "system_mem_used_pct": {
+        "max": 71.65818218432375,
+        "mean": 71.62941256143091
+      },
+      "system_swap_used_bytes": {
+        "max": 0,
+        "mean": 0
+      },
+      "system_swap_used_pct": {
+        "max": 0.0,
+        "mean": 0.0
+      }
+    },
+    "run_config": {
+      "backend": "vllm",
+      "concurrency_safety_fraction": 0.85,
+      "container_name": "vllm-bench",
+      "cuda_visible_devices": 0,
+      "filter_suite_by_vllm_max": 1,
+      "gpu_device": 0,
+      "guard_grace_samples": 2,
+      "host": "0.0.0.0",
+      "include_super": 0,
+      "legacy_container_name": "vllm-nemotron",
+      "max_host_ram_pct": 0,
+      "max_model_len": 262144,
+      "max_swap_growth_gib": 1.0,
+      "max_swap_used_gib": 4.0,
+      "max_tokens": 128,
+      "model_id": "nvidia/Gemma-4-26B-A4B-NVFP4",
+      "port": 8000,
+      "prompt_mode": "unique",
+      "prompt_words": 256,
+      "resource_interval": 1.0,
+      "slug": "nvidia-gemma-4-26b-a4b-nvfp4",
+      "start_script": "/home/ph4r05/benchmark/scripts/start-nvidia-gemma-4-26b-a4b-nvfp4.sh",
+      "stop_after_each": 1,
+      "suite_cases": "1:1,1:2,1:4,2:4,4:8,8:16,16:32,32:64",
+      "tensor_parallel_size": 1,
+      "vllm_docker_memory_limit_gib": "",
+      "vllm_docker_swap_limit_gib": "",
+      "vllm_gpu_memory_utilization": 0.75,
+      "vllm_image": "nvcr.io/nvidia/vllm:26.04-py3",
+      "vllm_max_num_batched_tokens": 65536,
+      "vllm_max_num_seqs": 1,
+      "vllm_max_num_seqs_cap": 16,
+      "vllm_startup_load_threshold": 6,
+      "vllm_startup_swap_used_gib": 2,
+      "vllm_target_batch_context_tokens": 262144,
+      "warmup": 1
+    },
+    "successful_requests": 8,
+    "total_token_throughput_tok_s": 145.6403679613169,
+    "total_tokens": 4891,
+    "ttft_s": {
+      "mean": 9.50764134100001,
+      "p50": 12.568615430000023,
+      "p90": 12.787000644000022,
+      "p99": 12.847619451899911
+    },
+    "wall_time_s": 33.582722074
+  }
+]
